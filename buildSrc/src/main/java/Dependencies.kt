@@ -26,8 +26,9 @@ object AndroidX {
     const val APP_COMPAT = "androidx.appcompat:appcompat:${Versions.APP_COMPAT}"
 }
 
-object Compose {
-    const val NAVIGATION = "androidx.navigation:navigation-compose:${Versions.NAV_VERSION}"
+object NAVIGATION {
+    const val NAVIGATION_FRAGMENT = "androidx.navigation:navigation-fragment-ktx:${Versions.NAV_VERSION}"
+    const val NAVIGATION_UI = "androidx.navigation:navigation-ui-ktx:${Versions.NAV_VERSION}"
 }
 
 object Google {

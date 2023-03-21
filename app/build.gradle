@@ -40,7 +40,8 @@ dependencies {
     implementation AndroidX.CORE_KTX
     implementation AndroidX.APP_COMPAT
     implementation Google.MATERIAL
-    implementation Compose.NAVIGATION
+    implementation NAVIGATION.NAVIGATION_FRAGMENT
+    implementation NAVIGATION.NAVIGATION_UI
 
     testImplementation UnitTest.JUNIT
     androidTestImplementation AndroidTest.ANDROID_JUNIT
