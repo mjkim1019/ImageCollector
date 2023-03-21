@@ -67,7 +67,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:src="@drawable/ic_favorite_24"
                 app:tint="@color/red_60"
-                android:padding="@dimen/btn_padding"/>
+                android:padding="@dimen/btn_padding"
+                android:clickable="true"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -79,6 +80,7 @@
                 android:textSize="16sp"
                 android:textColor="@color/highlight"
                 android:textFontWeight="800"
+                android:visibility="gone"
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
 

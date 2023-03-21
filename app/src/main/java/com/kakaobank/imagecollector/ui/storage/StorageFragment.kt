@@ -6,10 +6,9 @@ import com.kakaobank.imagecollector.databinding.FragmentStorageBinding
 
 class StorageFragment: BaseFragment<FragmentStorageBinding>(R.layout.fragment_storage) {
     override fun createView(binding: FragmentStorageBinding) {
-        TODO("Not yet implemented")
     }
 
     override fun viewCreated() {
-        TODO("Not yet implemented")
+
     }
 }
