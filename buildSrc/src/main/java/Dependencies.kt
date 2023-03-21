@@ -6,6 +6,9 @@ object Versions {
     // KTX
     const val CORE = "1.9.0"
 
+    // Compose
+    const val NAV_VERSION = "2.5.3"
+
     // Retrofit
     const val RETROFIT = "2.7.1"
     const val OKHTTP = "4.3.1"
@@ -21,6 +24,10 @@ object Versions {
 object AndroidX {
     const val CORE_KTX = "androidx.core:core-ktx:${Versions.CORE}"
     const val APP_COMPAT = "androidx.appcompat:appcompat:${Versions.APP_COMPAT}"
+}
+
+object Compose {
+    const val NAVIGATION = "androidx.navigation:navigation-compose:${Versions.NAV_VERSION}"
 }
 
 object Google {
