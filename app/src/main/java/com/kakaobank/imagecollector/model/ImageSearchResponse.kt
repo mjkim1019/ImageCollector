@@ -1,18 +1,20 @@
 package com.kakaobank.imagecollector.model
 
+import com.squareup.moshi.Json
 
-data class ImageSearchResponse (
+
+data class ImageSearchResponse(
     val metaData: MetaData,
     val documents: MutableList<KakaoImage>
-        )
+)
 
-data class KakaoImage (
+data class KakaoImage(
     val collection: String,
-    val thumbnail_url: String, // 미리보기 이미지 url
-    val image_url: String, // 이미지 url
+    @Json(name = "thumbnail_url") val thumbnailUrl: String, // 미리보기 이미지 url
+    @Json(name = "image_url") val imageUrl: String, // 이미지 url
     val width: Int,
     val height: Int,
-    val display_sitename: String, // 출처
-    val doc_url: String, // 문서 url
+    @Json(name = "display_sitename") val displaySitename: String, // 출처
+    @Json(name = "doc_url") val docUrl: String, // 문서 url
     val datetime: String // 문서 작성 시간, [YYYY]-[MM]-[DD]T[hh]:[mm]:[ss].000+[tz]
-        )
+)
