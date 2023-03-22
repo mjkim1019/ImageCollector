@@ -1,8 +1,6 @@
 package com.kakaobank.imagecollector.data
 
-import android.provider.SyncStateContract.Constants
 import retrofit2.http.GET
-import retrofit2.http.Header
 import retrofit2.http.Query
 
 interface ApiService {

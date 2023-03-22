@@ -9,9 +9,12 @@ object Versions {
     // Compose
     const val NAV_VERSION = "2.5.3"
 
-    // Retrofit
+    // API Library
     const val RETROFIT = "2.9.0"
     const val OKHTTP = "4.10.0"
+
+    // Hilt
+    const val HILT = "2.44"
 
     // Test
     const val JUNIT = "4.13.2"
@@ -33,6 +36,8 @@ object NAVIGATION {
 
 object Google {
     const val MATERIAL = "com.google.android.material:material:${Versions.MATERIAL}"
+    const val HILT_ANDROID = "com.google.dagger:hilt-android:${Versions.HILT}"
+    const val HILT_COMPILER = "com.google.dagger:hilt-compiler:${Versions.HILT}"
 }
 
 object Libraries {
