@@ -47,9 +47,10 @@ dependencies {
     implementation NAVIGATION.NAVIGATION_FRAGMENT
     implementation NAVIGATION.NAVIGATION_UI
     implementation Libraries.RETROFIT
-    implementation Libraries.RETROFIT_CONVERTER_GSON
+    implementation Libraries.RETROFIT_CONVERTER_MOSHI
     implementation Libraries.OKHTTP
     implementation Libraries.OKHTTP_LOGGING_INTERCEPTOR
+    implementation Libraries.MOSHI_KOTLIN
 
     testImplementation UnitTest.JUNIT
     androidTestImplementation AndroidTest.ANDROID_JUNIT

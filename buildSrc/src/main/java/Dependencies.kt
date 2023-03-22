@@ -12,6 +12,7 @@ object Versions {
     // API Library
     const val RETROFIT = "2.9.0"
     const val OKHTTP = "4.10.0"
+    const val MOSHI = "1.14.0"
 
     // Hilt
     const val HILT = "2.44"
@@ -42,9 +43,10 @@ object Google {
 
 object Libraries {
     const val RETROFIT                   = "com.squareup.retrofit2:retrofit:${Versions.RETROFIT}"
-    const val RETROFIT_CONVERTER_GSON    = "com.squareup.retrofit2:converter-gson:${Versions.RETROFIT}"
+    const val RETROFIT_CONVERTER_MOSHI    = "com.squareup.retrofit2:converter-moshi:${Versions.RETROFIT}"
     const val OKHTTP                     = "com.squareup.okhttp3:okhttp:${Versions.OKHTTP}"
     const val OKHTTP_LOGGING_INTERCEPTOR = "com.squareup.okhttp3:logging-interceptor:${Versions.OKHTTP}"
+    const val MOSHI_KOTLIN = "com.squareup.moshi:moshi-kotlin:${Versions.MOSHI}"
 }
 
 object UnitTest {
