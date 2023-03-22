@@ -10,8 +10,8 @@ object Versions {
     const val NAV_VERSION = "2.5.3"
 
     // Retrofit
-    const val RETROFIT = "2.7.1"
-    const val OKHTTP = "4.3.1"
+    const val RETROFIT = "2.9.0"
+    const val OKHTTP = "4.10.0"
 
     // Test
     const val JUNIT = "4.13.2"
@@ -40,7 +40,6 @@ object Libraries {
     const val RETROFIT_CONVERTER_GSON    = "com.squareup.retrofit2:converter-gson:${Versions.RETROFIT}"
     const val OKHTTP                     = "com.squareup.okhttp3:okhttp:${Versions.OKHTTP}"
     const val OKHTTP_LOGGING_INTERCEPTOR = "com.squareup.okhttp3:logging-interceptor:${Versions.OKHTTP}"
-
 }
 
 object UnitTest {
