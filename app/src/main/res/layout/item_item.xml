@@ -3,7 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <variable
+            name="img"
+            type="String" />
 
+        <variable
+            name="date"
+            type="String" />
+
+        <variable
+            name="time"
+            type="String" />
+
+        <variable
+            name="isFavorite"
+            type="Boolean" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -28,7 +42,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="fitXY"
-                    android:src="@color/grey_20" />
+                    android:src="@{img}" />
             </com.google.android.material.card.MaterialCardView>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -44,7 +58,7 @@
                     android:id="@+id/tv_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="2023년 3월 22일"
+                    android:text="@{date}"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -54,20 +68,23 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/image_list_spacing"
-                    android:text="03:26 A.M"
+                    android:text="@{time}"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_date" />
 
                 <ImageView
+                    android:id="@+id/btn_favorite"
                     android:layout_width="34dp"
                     android:layout_height="34dp"
+                    android:clickable="true"
                     android:padding="2dp"
-                    android:src="@drawable/ic_favorite_border_24"
+                    android:src="@{isFavorite ? @drawable/ic_favorite : @drawable/ic_favorite_border, default = @drawable/ic_favorite_border}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

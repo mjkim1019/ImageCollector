@@ -63,7 +63,7 @@
                 android:layout_height="38dp"
                 android:clickable="true"
                 android:padding="@dimen/btn_padding"
-                android:src="@drawable/ic_favorite_24"
+                android:src="@drawable/ic_favorite"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
