@@ -1,4 +1,4 @@
-package com.kakaobank.imagecollector.ui.search
+package com.kakaobank.imagecollector.ui.fragment
 
 import androidx.navigation.fragment.findNavController
 import com.kakaobank.imagecollector.R

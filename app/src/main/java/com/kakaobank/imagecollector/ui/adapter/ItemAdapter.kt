@@ -1,4 +1,4 @@
-package com.kakaobank.imagecollector.ui
+package com.kakaobank.imagecollector.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

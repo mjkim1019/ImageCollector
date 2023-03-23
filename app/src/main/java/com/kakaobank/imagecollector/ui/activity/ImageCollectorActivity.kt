@@ -1,4 +1,4 @@
-package com.kakaobank.imagecollector.ui
+package com.kakaobank.imagecollector.ui.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
