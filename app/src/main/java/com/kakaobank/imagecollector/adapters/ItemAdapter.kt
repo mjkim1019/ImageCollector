@@ -1,4 +1,4 @@
-package com.kakaobank.imagecollector.ui.adapter
+package com.kakaobank.imagecollector.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.kakaobank.imagecollector.databinding.ItemItemBinding
-import com.kakaobank.imagecollector.model.Item
+import com.kakaobank.imagecollector.models.Item
 
 class ItemAdapter(private val onClick: () -> Unit) : ListAdapter<Item, ItemAdapter.ViewHolder>(
     ITEM_DIFF_CALLBACK

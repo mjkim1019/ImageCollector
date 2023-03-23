@@ -1,4 +1,4 @@
-package com.kakaobank.imagecollector.model
+package com.kakaobank.imagecollector.models
 
 data class Item(
     val thumbnail: String, // thumbnail url
