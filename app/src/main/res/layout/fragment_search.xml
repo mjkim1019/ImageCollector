@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="vm"
+            type="com.kakaobank.imagecollector.ui.viewmodels.SearchViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -40,13 +42,16 @@
                     android:src="@drawable/ic_search_24"
                     app:layout_constraintStart_toStartOf="parent" />
 
-                <com.google.android.material.textfield.TextInputEditText
+                <EditText
+                    android:id="@+id/et_search"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:background="@null"
                     android:inputType="text"
+                    android:imeOptions="actionSearch"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/iv_search" />
+                    app:layout_constraintStart_toEndOf="@id/iv_search"
+                    android:onTextChanged="@{vm.onSearchWordChanged}"/>
 
                 <ImageView
                     android:layout_width="wrap_content"
