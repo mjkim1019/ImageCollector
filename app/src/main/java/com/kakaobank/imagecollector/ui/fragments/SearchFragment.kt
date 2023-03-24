@@ -41,6 +41,10 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
             navController.navigate(R.id.action_searchFragment_to_storageFragment)
         }
 
+        binding.etSearch.setOnClickListener {
+            viewModel.setIsSearching(true)
+        }
+
         binding.etSearch.setOnKeyListener { v, keyCode, event ->
             if (event.action == KeyEvent.ACTION_DOWN){
                 Log.d("SearchFragment", "setListener: ${viewModel.searchWord.value}")

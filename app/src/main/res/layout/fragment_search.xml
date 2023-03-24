@@ -53,18 +53,22 @@
                     android:onTextChanged="@{vm.onSearchWordChanged}"
                     android:paddingHorizontal="2dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/iv_delete"
-                    app:layout_constraintStart_toEndOf="@id/iv_search" />
+                    app:layout_constraintEnd_toStartOf="@id/btn_clear"
+                    app:layout_constraintStart_toEndOf="@id/iv_search"
+                    android:text="@{vm.searchWord}"/>
 
                 <ImageView
-                    android:id="@+id/iv_delete"
+                    android:id="@+id/btn_clear"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:paddingHorizontal="2dp"
                     android:src="@drawable/ic_x"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:tint="@color/grey_20"
-                    android:visibility="@{vm.isSearching ? View.VISIBLE : View.INVISIBLE, default = gone}"/>
+                    android:visibility="@{vm.isSearching ? View.VISIBLE : View.INVISIBLE, default = gone}"
+                    android:clickable="true"
+                    android:onClickListener="@{vm.onClickClearBtn}"
+                    />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
