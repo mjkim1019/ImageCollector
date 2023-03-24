@@ -1,4 +1,4 @@
-package com.kakaobank.imagecollector.fragments
+package com.kakaobank.imagecollector.ui.fragments
 
 import com.kakaobank.imagecollector.R
 import com.kakaobank.imagecollector.base.BaseFragment

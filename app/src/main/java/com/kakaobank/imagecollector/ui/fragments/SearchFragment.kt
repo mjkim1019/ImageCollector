@@ -1,9 +1,9 @@
-package com.kakaobank.imagecollector.fragments
+package com.kakaobank.imagecollector.ui.fragments
 
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.kakaobank.imagecollector.R
-import com.kakaobank.imagecollector.adapters.ItemAdapter
+import com.kakaobank.imagecollector.ui.adapters.ItemAdapter
 import com.kakaobank.imagecollector.base.BaseFragment
 import com.kakaobank.imagecollector.databinding.FragmentSearchBinding
 
