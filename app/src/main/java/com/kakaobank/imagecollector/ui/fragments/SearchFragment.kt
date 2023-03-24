@@ -10,6 +10,7 @@ import com.kakaobank.imagecollector.ui.adapters.ItemAdapter
 import com.kakaobank.imagecollector.base.BaseFragment
 import com.kakaobank.imagecollector.databinding.FragmentSearchBinding
 import com.kakaobank.imagecollector.ui.viewmodels.SearchViewModel
+import com.kakaobank.imagecollector.util.ImageCollectorConst
 import com.kakaobank.imagecollector.util.hideKeyboard
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -53,7 +54,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
 
         binding.etSearch.setOnKeyListener { v, keyCode, event ->
             if (event.action == KeyEvent.ACTION_DOWN) {
-                Log.d("SearchFragment", "setListener: ${viewModel.searchWord.value}")
+                Log.d(ImageCollectorConst.DEBUG_SEARCH_FRAGMENT, "setListener: ${viewModel.searchWord.value}")
                 v.clearFocus()
                 return@setOnKeyListener true
             }
@@ -66,7 +67,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
         }
 
         binding.etSearch.setOnFocusChangeListener { v, hasFocus ->
-            Log.d("SearchFragment", "hasFocus: ${hasFocus}")
+            Log.d(ImageCollectorConst.DEBUG_SEARCH_FRAGMENT, "hasFocus: ${hasFocus}")
             if (!hasFocus) {
                 hideKeyboard(requireContext(), v)
                 viewModel.setIsSearching(false)

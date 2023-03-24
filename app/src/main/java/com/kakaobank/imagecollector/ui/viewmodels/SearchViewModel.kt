@@ -4,6 +4,7 @@ import android.util.Log
 import android.view.View
 import com.kakaobank.imagecollector.base.BaseViewModel
 import com.kakaobank.imagecollector.data.Repository
+import com.kakaobank.imagecollector.util.ImageCollectorConst.DEBUT_SEARCH_VIEWMODEL
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -26,7 +27,7 @@ class SearchViewModel @Inject constructor(
 
     val onClickClearBtn = View.OnClickListener {
         setSearchWord("")
-        Log.d("SearchViewModel", "onClickClearBtn: ${searchWord.value}")
+        Log.d(DEBUT_SEARCH_VIEWMODEL, "onClickClearBtn: ${searchWord.value}")
     }
 
     fun setSearchWord(str: String) {
