@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="android.view.View"/>
         <variable
             name="vm"
             type="com.kakaobank.imagecollector.ui.viewmodels.SearchViewModel" />
@@ -47,18 +48,23 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:background="@null"
-                    android:inputType="text"
                     android:imeOptions="actionSearch"
+                    android:inputType="text"
+                    android:onTextChanged="@{vm.onSearchWordChanged}"
+                    android:paddingHorizontal="2dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/iv_search"
-                    android:onTextChanged="@{vm.onSearchWordChanged}"/>
+                    app:layout_constraintEnd_toStartOf="@id/iv_delete"
+                    app:layout_constraintStart_toEndOf="@id/iv_search" />
 
                 <ImageView
+                    android:id="@+id/iv_delete"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:paddingHorizontal="2dp"
                     android:src="@drawable/ic_x"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:tint="@color/grey_20" />
+                    app:tint="@color/grey_20"
+                    android:visibility="@{vm.isSearching ? View.VISIBLE : View.INVISIBLE, default = gone}"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -72,19 +78,21 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:tint="@color/red_60" />
+                app:tint="@color/red_60"
+                android:visibility="@{vm.isSearching ? View.INVISIBLE : View.VISIBLE, default = visible}"/>
 
             <TextView
+                android:id="@+id/btn_cancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/search_cancel"
                 android:textColor="@color/highlight"
                 android:textFontWeight="800"
                 android:textSize="16sp"
-                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:visibility="@{vm.isSearching ? View.VISIBLE : View.INVISIBLE, default = invisible}"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout

@@ -44,6 +44,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
         binding.etSearch.setOnKeyListener { v, keyCode, event ->
             if (event.action == KeyEvent.ACTION_DOWN){
                 Log.d("SearchFragment", "setListener: ${viewModel.searchWord.value}")
+                viewModel.setIsSearching(false)
                 return@setOnKeyListener true
             }
             return@setOnKeyListener false

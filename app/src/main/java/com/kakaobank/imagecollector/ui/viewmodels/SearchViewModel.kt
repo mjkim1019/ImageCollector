@@ -14,9 +14,16 @@ class SearchViewModel @Inject constructor(
     private val _searchWord: MutableStateFlow<String> = MutableStateFlow("")
     val searchWord: StateFlow<String> get() = _searchWord
 
+    private var _isSearching: MutableStateFlow<Boolean> = MutableStateFlow(false)
+    val isSearching: StateFlow<Boolean> get() = _isSearching
+
     fun onSearchWordChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
         _searchWord.value = s.toString()
+        if (!_isSearching.value) setIsSearching(true)
     }
 
+    fun setIsSearching(value: Boolean) {
+        _isSearching.value = value
+    }
 
 }
