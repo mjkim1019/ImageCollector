@@ -2,7 +2,6 @@ package com.kakaobank.imagecollector.ui.viewmodels
 
 import android.util.Log
 import android.view.View
-import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import com.kakaobank.imagecollector.base.BaseViewModel
 import com.kakaobank.imagecollector.data.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -22,7 +21,7 @@ class SearchViewModel @Inject constructor(
 
     fun onSearchWordChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
         setSearchWord(s.toString())
-        if (!_isSearching.value) setIsSearching(true)
+        if (!_isSearching.value && searchWord.value != "") setIsSearching(true)
     }
 
     val onClickClearBtn = View.OnClickListener {

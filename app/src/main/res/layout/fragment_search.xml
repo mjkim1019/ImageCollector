@@ -12,7 +12,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/yellow_99">
+        android:background="@color/yellow_99"
+        android:clickable="true"
+        android:focusableInTouchMode="true"
+        android:focusable="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_top_search"
@@ -26,7 +29,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="0dp"
-                android:layout_height="40dp"
+                android:layout_height="44dp"
                 android:layout_marginEnd="12dp"
                 android:background="@drawable/bg_rectangular_12"
                 android:paddingHorizontal="@dimen/image_list_spacing"
@@ -96,15 +99,19 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:visibility="@{vm.isSearching ? View.VISIBLE : View.INVISIBLE, default = invisible}"/>
+                android:visibility="@{vm.isSearching ? View.VISIBLE : View.GONE, default = gone}"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_item_list"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="28dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cl_top_search">
+            app:layout_constraintTop_toBottomOf="@id/cl_top_search"
+            android:clickable="true"
+            android:focusableInTouchMode="true"
+            android:focusable="true">
 
             <include
                 layout="@layout/layout_empty"
@@ -117,7 +124,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:spanCount="2" />
+                app:spanCount="2"
+                android:clickable="true"
+                android:focusableInTouchMode="true"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -10,6 +10,7 @@ import com.kakaobank.imagecollector.ui.adapters.ItemAdapter
 import com.kakaobank.imagecollector.base.BaseFragment
 import com.kakaobank.imagecollector.databinding.FragmentSearchBinding
 import com.kakaobank.imagecollector.ui.viewmodels.SearchViewModel
+import com.kakaobank.imagecollector.util.hideKeyboard
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -21,10 +22,15 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
     }
 
     override fun viewCreated() {
+        binding.clItemList.bringToFront()
+        bindingVm()
         setAdapter()
         setListener()
     }
 
+    private fun bindingVm() {
+
+    }
     private fun setAdapter() {
         val itemAdapter = ItemAdapter {
             // todo click 했을 때 어떻게 할지
@@ -46,13 +52,29 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
         }
 
         binding.etSearch.setOnKeyListener { v, keyCode, event ->
-            if (event.action == KeyEvent.ACTION_DOWN){
+            if (event.action == KeyEvent.ACTION_DOWN) {
                 Log.d("SearchFragment", "setListener: ${viewModel.searchWord.value}")
-                viewModel.setIsSearching(false)
+                v.clearFocus()
                 return@setOnKeyListener true
             }
             return@setOnKeyListener false
         }
+
+        binding.btnCancel.setOnClickListener {
+            viewModel.setSearchWord("")
+            binding.etSearch.clearFocus()
+        }
+
+        binding.etSearch.setOnFocusChangeListener { v, hasFocus ->
+            Log.d("SearchFragment", "hasFocus: ${hasFocus}")
+            if (!hasFocus) {
+                hideKeyboard(requireContext(), v)
+                viewModel.setIsSearching(false)
+            }
+        }
+
+
+
     }
 
 }
