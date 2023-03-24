@@ -4,6 +4,7 @@ import android.util.Log
 import android.view.View
 import com.kakaobank.imagecollector.base.BaseViewModel
 import com.kakaobank.imagecollector.data.Repository
+import com.kakaobank.imagecollector.models.Item
 import com.kakaobank.imagecollector.util.ImageCollectorConst.DEBUT_SEARCH_VIEWMODEL
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -19,6 +20,9 @@ class SearchViewModel @Inject constructor(
 
     private var _isSearching: MutableStateFlow<Boolean> = MutableStateFlow(false)
     val isSearching: StateFlow<Boolean> get() = _isSearching
+
+    // todo paging
+    lateinit var itemList: StateFlow<List<Item>>
 
     fun onSearchWordChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
         setSearchWord(s.toString())
