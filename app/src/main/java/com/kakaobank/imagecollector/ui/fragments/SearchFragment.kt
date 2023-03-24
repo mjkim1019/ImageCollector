@@ -6,7 +6,9 @@ import com.kakaobank.imagecollector.R
 import com.kakaobank.imagecollector.ui.adapters.ItemAdapter
 import com.kakaobank.imagecollector.base.BaseFragment
 import com.kakaobank.imagecollector.databinding.FragmentSearchBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_search) {
     override fun createView(binding: FragmentSearchBinding) {
     }
