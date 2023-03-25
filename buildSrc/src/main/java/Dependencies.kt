@@ -2,6 +2,7 @@ object Versions {
     // AndroidX
     const val APP_COMPAT = "1.6.1"
     const val MATERIAL = "1.8.0"
+    const val PAGING = "3.1.1"
 
     // KTX
     const val CORE = "1.9.0"
@@ -28,6 +29,7 @@ object Versions {
 object AndroidX {
     const val CORE_KTX = "androidx.core:core-ktx:${Versions.CORE}"
     const val APP_COMPAT = "androidx.appcompat:appcompat:${Versions.APP_COMPAT}"
+    const val PAGING = "androidx.paging:paging-runtime:${Versions.PAGING}"
 }
 
 object NAVIGATION {

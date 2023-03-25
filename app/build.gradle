@@ -41,6 +41,7 @@ android {
 dependencies {
     implementation AndroidX.CORE_KTX
     implementation AndroidX.APP_COMPAT
+    implementation AndroidX.PAGING
     implementation Google.MATERIAL
     implementation Google.HILT_ANDROID
     kapt Google.HILT_COMPILER
