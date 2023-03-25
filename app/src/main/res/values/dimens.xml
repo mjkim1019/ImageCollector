@@ -5,5 +5,5 @@
     <dimen name="item_padding_horizontal">8dp</dimen>
     <dimen name="item_padding_vertical">4dp</dimen>
     <dimen name="btn_padding">2dp</dimen>
-    <dimen name="top_screen_margin">18dp</dimen>
+    <dimen name="top_screen_margin">16dp</dimen>
 </resources>

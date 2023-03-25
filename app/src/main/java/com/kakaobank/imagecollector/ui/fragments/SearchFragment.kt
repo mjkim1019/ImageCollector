@@ -158,11 +158,6 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
             viewModel.setIsSearching(true)
         }
 
-        binding.btnCancel.setOnClickListener {
-            viewModel.setSearchWord("")
-            binding.etSearch.clearFocus()
-        }
-
         binding.etSearch.setOnFocusChangeListener { v, hasFocus ->
             Log.d(DEBUG_SEARCH_FRAGMENT, "hasFocus: ${hasFocus}")
             if (!hasFocus) {
