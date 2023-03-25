@@ -52,6 +52,8 @@ dependencies {
     implementation Libraries.OKHTTP
     implementation Libraries.OKHTTP_LOGGING_INTERCEPTOR
     implementation Libraries.MOSHI_KOTLIN
+    implementation Libraries.GLIDE
+    annotationProcessor Libraries.GLIDE_COMPILER
 
     testImplementation UnitTest.JUNIT
     androidTestImplementation AndroidTest.ANDROID_JUNIT
