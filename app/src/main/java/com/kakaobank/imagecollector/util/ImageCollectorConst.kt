@@ -8,6 +8,12 @@ object ImageCollectorConst {
     const val NETWORK_ERROR = 1001
 
     /**
+     * API
+     */
+    const val RECENCY = "recency" // 최신순
+    const val NETWORK_PAGE_SIZE = 30
+
+    /**
      * DEBUG
      */
     const val DEBUG_SEARCH_FRAGMENT = "SEARCH_FRAGMENT"

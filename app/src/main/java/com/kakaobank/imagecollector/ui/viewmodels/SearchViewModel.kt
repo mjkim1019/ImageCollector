@@ -22,7 +22,7 @@ class SearchViewModel @Inject constructor(
     val isSearching: StateFlow<Boolean> get() = _isSearching
 
     // todo paging
-    lateinit var itemList: StateFlow<List<Item>>
+    var itemList: MutableStateFlow<List<Item>> = MutableStateFlow(listOf<Item>())
 
     fun onSearchWordChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
         setSearchWord(s.toString())

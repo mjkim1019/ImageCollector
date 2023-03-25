@@ -1,6 +1,7 @@
 package com.kakaobank.imagecollector.models
 
 data class Item(
+    val id: Int,
     val thumbnail: String, // thumbnail url
     val date: String, // yyyy년 mm월 dd일
     val time: String, // HH:MM aa
