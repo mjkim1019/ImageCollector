@@ -16,6 +16,7 @@ import com.kakaobank.imagecollector.base.BaseFragment
 import com.kakaobank.imagecollector.databinding.FragmentSearchBinding
 import com.kakaobank.imagecollector.models.Item
 import com.kakaobank.imagecollector.ui.model.EmptyState
+import com.kakaobank.imagecollector.ui.model.ScreenType
 import com.kakaobank.imagecollector.ui.model.UiAction
 import com.kakaobank.imagecollector.ui.model.UiState
 import com.kakaobank.imagecollector.ui.viewmodels.SearchViewModel
@@ -34,8 +35,9 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
     }
 
     override fun viewCreated() {
-        binding.layoutEmpty.root.bringToFront()
-        binding.layoutEmpty.emptyState = EmptyState.NOT_YET
+        binding.layoutItemList.screenType = ScreenType.SEARCH_SCREEN
+        binding.layoutItemList.layoutEmpty.root.bringToFront()
+        binding.layoutItemList.layoutEmpty.emptyState = EmptyState.NOT_YET
         bindState(
             uiState = viewModel.state,
             pagingData = viewModel.pagingDataFlow,
@@ -52,7 +54,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
         val itemAdapter = ItemAdapter {
             // todo click 했을 때 어떻게 할지
         }
-        binding.rvItemList.apply {
+        binding.layoutItemList.rvItemList.apply {
             adapter = itemAdapter
             layoutManager = GridLayoutManager(this.context, 2)
         }
@@ -93,7 +95,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
 
     private fun updateSearchInput(onQueryChanged: (UiAction.Search) -> Unit) {
         if (viewModel.searchWord.value != "") {
-            binding.rvItemList.scrollToPosition(0)
+            binding.layoutItemList.rvItemList.scrollToPosition(0)
             onQueryChanged(UiAction.Search(query = viewModel.searchWord.value))
         }
     }
@@ -104,7 +106,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
         pagingData: Flow<PagingData<Item>>,
         onScrollChanged: (UiAction.Scroll) -> Unit
     ) {
-        binding.rvItemList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+        binding.layoutItemList.rvItemList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 if (dy != 0) onScrollChanged(UiAction.Scroll(currentQuery = viewModel.state.value.query))
             }
@@ -124,7 +126,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
         }
         lifecycleScope.launch {
             shouldScrollToTop.collectLatest {
-                if (it) binding.rvItemList.scrollToPosition(0)
+                if (it) binding.layoutItemList.rvItemList.scrollToPosition(0)
             }
         }
         lifecycleScope.launch {
@@ -133,17 +135,17 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
                 val isDone = loadState.refresh is LoadState.NotLoading
                 if (isDone) {
                     if (adapter.itemCount == 0){
-                        binding.layoutEmpty.emptyState = EmptyState.NO_RESULT
+                        binding.layoutItemList.layoutEmpty.emptyState = EmptyState.NO_RESULT
                     } else {
-                        binding.layoutEmpty.emptyState = EmptyState.NOT_EMPTY
+                        binding.layoutItemList.layoutEmpty.emptyState = EmptyState.NOT_EMPTY
                     }
                 }
                 // page 이전 가져올 때 로딩 중 보여주기 위해
                 val isPrepend = loadState.source.prepend is LoadState.Loading
-                binding.prependProgress.isVisible = isPrepend
+                binding.layoutItemList.prependProgress.isVisible = isPrepend
                 // page 이후 가져올 때 로딩 중 보여주기 위해
                 val isAppend = loadState.source.append is LoadState.Loading
-                binding.appendProgress.isVisible = isAppend
+                binding.layoutItemList.appendProgress.isVisible = isAppend
             }
         }
     }
