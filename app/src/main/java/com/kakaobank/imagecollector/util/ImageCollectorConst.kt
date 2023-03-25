@@ -21,8 +21,9 @@ object ImageCollectorConst {
     const val DEFAULT_QUERY = "카카오뱅크"
 
     /**
-     * DEBUG
+     * DEBUG TAG
      */
-    const val DEBUG_SEARCH_FRAGMENT = "SEARCH_FRAGMENT"
-    const val DEBUT_SEARCH_VIEWMODEL = "SEARCH_VIEWMODEL"
+    const val DEBUG_SEARCH_FRAGMENT = "DEBUG_SearchFragment"
+    const val DEBUG_SEARCH_VIEWMODEL = "DEBUG_SearchViewModel"
+    const val DEBUG_DATE_FORMATTER = "DEBUG_DateFormatter"
 }
