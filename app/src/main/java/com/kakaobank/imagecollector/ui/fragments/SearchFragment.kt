@@ -2,6 +2,7 @@ package com.kakaobank.imagecollector.ui.fragments
 
 import android.util.Log
 import android.view.KeyEvent
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -128,6 +129,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
         }
         lifecycleScope.launch {
             adapter.loadStateFlow.collect { loadState ->
+                // 검색 결과가 없는지 아직 검색 전인지 보여주기 위해
                 val isDone = loadState.refresh is LoadState.NotLoading
                 if (isDone) {
                     if (adapter.itemCount == 0){
@@ -136,6 +138,12 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
                         binding.layoutEmpty.emptyState = EmptyState.NOT_EMPTY
                     }
                 }
+                // page 이전 가져올 때 로딩 중 보여주기 위해
+                val isPrepend = loadState.source.prepend is LoadState.Loading
+                binding.prependProgress.isVisible = isPrepend
+                // page 이후 가져올 때 로딩 중 보여주기 위해
+                val isAppend = loadState.source.append is LoadState.Loading
+                binding.appendProgress.isVisible = isAppend
             }
         }
     }
