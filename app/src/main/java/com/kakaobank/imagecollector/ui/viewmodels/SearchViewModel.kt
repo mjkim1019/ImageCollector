@@ -11,7 +11,7 @@ import com.kakaobank.imagecollector.data.Repository
 import com.kakaobank.imagecollector.models.Item
 import com.kakaobank.imagecollector.ui.model.UiAction
 import com.kakaobank.imagecollector.ui.model.UiState
-import com.kakaobank.imagecollector.util.ImageCollectorConst.DEBUT_SEARCH_VIEWMODEL
+import com.kakaobank.imagecollector.util.ImageCollectorConst.DEBUG_SEARCH_VIEWMODEL
 import com.kakaobank.imagecollector.util.ImageCollectorConst.DEFAULT_QUERY
 import com.kakaobank.imagecollector.util.ImageCollectorConst.LAST_QUERY_SCROLLED
 import com.kakaobank.imagecollector.util.ImageCollectorConst.LAST_SEARCH_QUERY
@@ -102,7 +102,7 @@ class SearchViewModel @Inject constructor(
 
     val onClickClearBtn = View.OnClickListener {
         setSearchWord("")
-        Log.d(DEBUT_SEARCH_VIEWMODEL, "onClickClearBtn: ${searchWord.value}")
+        Log.d(DEBUG_SEARCH_VIEWMODEL, "onClickClearBtn: ${searchWord.value}")
     }
 
     fun setSearchWord(str: String) {

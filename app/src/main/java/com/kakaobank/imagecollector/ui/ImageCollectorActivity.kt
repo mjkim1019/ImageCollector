@@ -8,8 +8,9 @@ import com.kakaobank.imagecollector.R
 import com.kakaobank.imagecollector.databinding.ActivityImagecollectorBinding
 import dagger.hilt.android.AndroidEntryPoint
 
+
 @AndroidEntryPoint
-class ImageCollectorActivity: AppCompatActivity() {
+class ImageCollectorActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityImagecollectorBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,8 +21,9 @@ class ImageCollectorActivity: AppCompatActivity() {
         setNavHost()
     }
 
-    private fun setNavHost(){
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+    private fun setNavHost() {
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
     }
 }

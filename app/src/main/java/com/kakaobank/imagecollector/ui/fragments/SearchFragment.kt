@@ -2,9 +2,11 @@ package com.kakaobank.imagecollector.ui.fragments
 
 import android.util.Log
 import android.view.KeyEvent
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.paging.LoadState
 import androidx.paging.PagingData
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,6 +15,7 @@ import com.kakaobank.imagecollector.ui.adapters.ItemAdapter
 import com.kakaobank.imagecollector.base.BaseFragment
 import com.kakaobank.imagecollector.databinding.FragmentSearchBinding
 import com.kakaobank.imagecollector.models.Item
+import com.kakaobank.imagecollector.ui.model.EmptyState
 import com.kakaobank.imagecollector.ui.model.UiAction
 import com.kakaobank.imagecollector.ui.model.UiState
 import com.kakaobank.imagecollector.ui.viewmodels.SearchViewModel
@@ -31,6 +34,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
     }
 
     override fun viewCreated() {
+        binding.layoutEmpty.root.bringToFront()
+        binding.layoutEmpty.emptyState = EmptyState.NOT_YET
         bindState(
             uiState = viewModel.state,
             pagingData = viewModel.pagingDataFlow,
@@ -104,8 +109,42 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
                 if (dy != 0) onScrollChanged(UiAction.Scroll(currentQuery = viewModel.state.value.query))
             }
         })
+        val notLoading = adapter.loadStateFlow
+            .distinctUntilChangedBy { it.source.refresh }
+            .map { it.source.refresh is LoadState.NotLoading }
+        val hasNotScrolledForCurrentSearch = uiState
+            .map { it.hasNotScrolledForCurrentSearch }
+            .distinctUntilChanged()
+        val shouldScrollToTop = combine(
+            notLoading, hasNotScrolledForCurrentSearch, Boolean::and
+        ).distinctUntilChanged()
+
         lifecycleScope.launch {
             pagingData.collectLatest { adapter.submitData(it) }
+        }
+        lifecycleScope.launch {
+            shouldScrollToTop.collectLatest {
+                if (it) binding.rvItemList.scrollToPosition(0)
+            }
+        }
+        lifecycleScope.launch {
+            adapter.loadStateFlow.collect { loadState ->
+                // 검색 결과가 없는지 아직 검색 전인지 보여주기 위해
+                val isDone = loadState.refresh is LoadState.NotLoading
+                if (isDone) {
+                    if (adapter.itemCount == 0){
+                        binding.layoutEmpty.emptyState = EmptyState.NO_RESULT
+                    } else {
+                        binding.layoutEmpty.emptyState = EmptyState.NOT_EMPTY
+                    }
+                }
+                // page 이전 가져올 때 로딩 중 보여주기 위해
+                val isPrepend = loadState.source.prepend is LoadState.Loading
+                binding.prependProgress.isVisible = isPrepend
+                // page 이후 가져올 때 로딩 중 보여주기 위해
+                val isAppend = loadState.source.append is LoadState.Loading
+                binding.appendProgress.isVisible = isAppend
+            }
         }
     }
 
@@ -117,11 +156,6 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
 
         binding.etSearch.setOnClickListener {
             viewModel.setIsSearching(true)
-        }
-
-        binding.btnCancel.setOnClickListener {
-            viewModel.setSearchWord("")
-            binding.etSearch.clearFocus()
         }
 
         binding.etSearch.setOnFocusChangeListener { v, hasFocus ->
