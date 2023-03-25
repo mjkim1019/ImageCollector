@@ -4,7 +4,7 @@ import com.squareup.moshi.Json
 
 
 data class ImageSearchResponse(
-    val metaData: MetaData,
+    val meta: MetaData,
     val documents: MutableList<KakaoImage>
 )
 

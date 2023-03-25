@@ -29,7 +29,7 @@ class ImagePagingSource (
                     time = dateTimeArray[1],
                 )
             }
-            val nextKey = if (response.metaData.isEnd) null
+            val nextKey = if (response.meta.isEnd) null
             else {
                 position + (params.loadSize / NETWORK_PAGE_SIZE)
             }

@@ -31,9 +31,6 @@ class SearchViewModel @Inject constructor(
     private var _isSearching: MutableStateFlow<Boolean> = MutableStateFlow(false)
     val isSearching: StateFlow<Boolean> get() = _isSearching
 
-    // todo paging
-    var itemList: MutableStateFlow<List<Item>> = MutableStateFlow(listOf<Item>())
-
     /**
      * UI 상태를 대표하는 Stream
      */
