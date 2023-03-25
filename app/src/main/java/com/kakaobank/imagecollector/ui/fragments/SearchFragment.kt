@@ -14,6 +14,7 @@ import com.kakaobank.imagecollector.ui.adapters.ItemAdapter
 import com.kakaobank.imagecollector.base.BaseFragment
 import com.kakaobank.imagecollector.databinding.FragmentSearchBinding
 import com.kakaobank.imagecollector.models.Item
+import com.kakaobank.imagecollector.ui.model.EmptyState
 import com.kakaobank.imagecollector.ui.model.UiAction
 import com.kakaobank.imagecollector.ui.model.UiState
 import com.kakaobank.imagecollector.ui.viewmodels.SearchViewModel
@@ -32,6 +33,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
     }
 
     override fun viewCreated() {
+        binding.layoutEmpty.root.bringToFront()
+        binding.layoutEmpty.emptyState = EmptyState.NOT_YET
         bindState(
             uiState = viewModel.state,
             pagingData = viewModel.pagingDataFlow,
@@ -120,7 +123,19 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
         }
         lifecycleScope.launch {
             shouldScrollToTop.collectLatest {
-                if(it) binding.rvItemList.scrollToPosition(0)
+                if (it) binding.rvItemList.scrollToPosition(0)
+            }
+        }
+        lifecycleScope.launch {
+            adapter.loadStateFlow.collect { loadState ->
+                val isDone = loadState.refresh is LoadState.NotLoading
+                if (isDone) {
+                    if (adapter.itemCount == 0){
+                        binding.layoutEmpty.emptyState = EmptyState.NO_RESULT
+                    } else {
+                        binding.layoutEmpty.emptyState = EmptyState.NOT_EMPTY
+                    }
+                }
             }
         }
     }
