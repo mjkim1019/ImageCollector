@@ -3,9 +3,9 @@ package com.kakaobank.imagecollector.util
 import java.text.SimpleDateFormat
 
 object DateFormatter {
-    const val responseDatePattern = "YYYY-MM-DD'T'hh:mm:ss.SSSZ"
-    const val itemDatePattern = "yyyy년 mm월 dd일"
-    const val itemTimePattern = "HH:MM aa"
+    private const val responseDatePattern = "yyyy-MM-DD'T'hh:mm:ss.SSSZ"
+    private const val itemDatePattern = "yyyy년 MM월 dd일"
+    private const val itemTimePattern = "hh:mm aa"
 
     val responseFormat = SimpleDateFormat(responseDatePattern)
     val itemDateFormat = SimpleDateFormat(itemDatePattern)
