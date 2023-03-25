@@ -41,7 +41,7 @@
         <TextView
             style="@style/InfoMessage.V45"
             android:text="@string/empty_info_storage"
-            android:visibility="@{screenType == ScreenType.STORAGE_SCREEN &amp;&amp; emptyState == EmptyState.NO_RESULT}"
+            android:visibility="@{screenType == ScreenType.STORAGE_SCREEN &amp;&amp; emptyState == EmptyState.NO_RESULT ? View.VISIBLE : View.GONE, default = gone}"
             tools:ignore="MissingConstraints" />
 
 
