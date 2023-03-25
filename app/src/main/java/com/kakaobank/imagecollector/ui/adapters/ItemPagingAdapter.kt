@@ -11,8 +11,8 @@ import com.bumptech.glide.request.RequestOptions
 import com.kakaobank.imagecollector.databinding.ItemItemBinding
 import com.kakaobank.imagecollector.models.Item
 
-class ItemAdapter(private val onClick: () -> Unit) :
-    PagingDataAdapter<Item, ItemAdapter.ViewHolder>(
+class ItemPagingAdapter(private val onClick: () -> Unit) :
+    PagingDataAdapter<Item, ItemPagingAdapter.ViewHolder>(
         ITEM_DIFF_CALLBACK
     ) {
     inner class ViewHolder(private val binding: ItemItemBinding) :
