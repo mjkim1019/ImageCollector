@@ -58,7 +58,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/btn_clear"
                     app:layout_constraintStart_toEndOf="@id/iv_search"
-                    android:text="@{vm.searchWord}"/>
+                    android:text="@{vm.searchWord}"
+                    android:includeFontPadding="false"/>
 
                 <ImageView
                     android:id="@+id/btn_clear"
@@ -106,7 +107,7 @@
             android:id="@+id/cl_item_list"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="@dimen/top_screen_margin"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cl_top_search"
             android:clickable="true"
@@ -126,7 +127,8 @@
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:spanCount="2"
                 android:clickable="true"
-                android:focusableInTouchMode="true"/>
+                android:focusableInTouchMode="true"
+                android:layout_marginHorizontal="@dimen/default_margin"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

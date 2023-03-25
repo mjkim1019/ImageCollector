@@ -2,6 +2,7 @@ object Versions {
     // AndroidX
     const val APP_COMPAT = "1.6.1"
     const val MATERIAL = "1.8.0"
+    const val PAGING = "3.1.1"
 
     // KTX
     const val CORE = "1.9.0"
@@ -13,6 +14,9 @@ object Versions {
     const val RETROFIT = "2.9.0"
     const val OKHTTP = "4.10.0"
     const val MOSHI = "1.14.0"
+
+    // Other Librarys
+    const val GLIDE = "4.15.0"
 
     // Hilt
     const val HILT = "2.44"
@@ -28,6 +32,7 @@ object Versions {
 object AndroidX {
     const val CORE_KTX = "androidx.core:core-ktx:${Versions.CORE}"
     const val APP_COMPAT = "androidx.appcompat:appcompat:${Versions.APP_COMPAT}"
+    const val PAGING = "androidx.paging:paging-runtime:${Versions.PAGING}"
 }
 
 object NAVIGATION {
@@ -47,6 +52,8 @@ object Libraries {
     const val OKHTTP                     = "com.squareup.okhttp3:okhttp:${Versions.OKHTTP}"
     const val OKHTTP_LOGGING_INTERCEPTOR = "com.squareup.okhttp3:logging-interceptor:${Versions.OKHTTP}"
     const val MOSHI_KOTLIN = "com.squareup.moshi:moshi-kotlin:${Versions.MOSHI}"
+    const val GLIDE = "com.github.bumptech.glide:glide:${Versions.GLIDE}"
+    const val GLIDE_COMPILER = "com.github.bumptech.glide:compiler:${Versions.GLIDE}"
 }
 
 object UnitTest {
