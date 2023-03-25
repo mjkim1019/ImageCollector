@@ -4,8 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 import com.kakaobank.imagecollector.databinding.ItemItemBinding
 import com.kakaobank.imagecollector.models.Item
 
@@ -17,7 +19,10 @@ class ItemAdapter(private val onClick: () -> Unit) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(image: Item) {
             binding.apply {
-                img = image.thumbnail
+                Glide.with(binding.root)
+                    .load(image.imgUrl)
+                    .apply(RequestOptions.bitmapTransform(RoundedCorners(12)))
+                    .into(ivImage)
                 date = image.date
                 time = image.time
                 isFavorite = image.isFavorite
@@ -48,7 +53,7 @@ class ItemAdapter(private val onClick: () -> Unit) :
                 oldItem == newItem
 
             override fun areContentsTheSame(oldItem: Item, newItem: Item): Boolean =
-                oldItem.thumbnail == newItem.thumbnail
+                oldItem.imgUrl == newItem.imgUrl
         }
     }
 }

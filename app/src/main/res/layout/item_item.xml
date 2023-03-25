@@ -3,9 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <variable
-            name="img"
-            type="String" />
 
         <variable
             name="date"
@@ -23,36 +20,30 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="8dp"
         app:cardCornerRadius="8dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cv_content"
-                android:layout_width="300dp"
-                android:layout_height="300dp"
-                app:cardCornerRadius="8dp"
+            <ImageView
+                android:id="@+id/iv_image"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:scaleType="fitXY"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="fitXY"
-                    android:src="@{img}" />
-            </com.google.android.material.card.MaterialCardView>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingHorizontal="@dimen/default_margin"
-                android:paddingVertical="@dimen/image_list_spacing"
-                app:layout_constraintEnd_toEndOf="@id/cv_content"
-                app:layout_constraintStart_toStartOf="@id/cv_content"
-                app:layout_constraintTop_toBottomOf="@id/cv_content">
+                android:paddingHorizontal="@dimen/item_padding_horizontal"
+                android:paddingVertical="@dimen/item_padding_vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btn_favorite"
+                app:layout_constraintTop_toBottomOf="@id/iv_image">
 
                 <TextView
                     android:id="@+id/tv_date"
@@ -60,7 +51,8 @@
                     android:layout_height="wrap_content"
                     android:text="@{date}"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="12sp"
+                    app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -70,22 +62,23 @@
                     android:layout_marginTop="@dimen/image_list_spacing"
                     android:text="@{time}"
                     android:textColor="@color/black"
-                    android:textSize="14sp"
+                    android:textSize="10sp"
+                    app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_date" />
 
-                <ImageView
-                    android:id="@+id/btn_favorite"
-                    android:layout_width="34dp"
-                    android:layout_height="34dp"
-                    android:clickable="true"
-                    android:padding="2dp"
-                    android:src="@{isFavorite ? @drawable/ic_favorite : @drawable/ic_favorite_border, default = @drawable/ic_favorite_border}"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ImageView
+                android:id="@+id/btn_favorite"
+                android:layout_width="32dp"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:padding="6dp"
+                android:src="@{isFavorite ? @drawable/ic_favorite : @drawable/ic_favorite_border, default = @drawable/ic_favorite_border}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_image" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>

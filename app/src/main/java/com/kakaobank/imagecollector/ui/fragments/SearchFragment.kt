@@ -25,7 +25,6 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_search) {
     private val viewModel: SearchViewModel by viewModels()
-    private lateinit var itemAdapter: ItemAdapter
 
     override fun createView(binding: FragmentSearchBinding) {
         binding.vm = viewModel

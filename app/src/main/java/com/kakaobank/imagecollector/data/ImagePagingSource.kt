@@ -24,7 +24,7 @@ class ImagePagingSource (
                 val dateTimeArray = DateFormatter.convertToItemDateAndTime(it.datetime)
                 Item(
                     id =0,
-                    thumbnail = it.thumbnailUrl,
+                    imgUrl = it.imageUrl,
                     date = dateTimeArray[0],
                     time = dateTimeArray[1],
                 )
