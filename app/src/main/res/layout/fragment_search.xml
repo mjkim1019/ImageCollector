@@ -14,7 +14,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/yellow_99"
+        android:background="?attr/background"
         android:clickable="true"
         android:focusable="true"
         android:focusableInTouchMode="true">
@@ -92,54 +92,15 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_item_list"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="@dimen/top_screen_margin"
-            android:clickable="true"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cl_top_search">
-
-            <include
-                android:id="@+id/layout_empty"
-                layout="@layout/layout_empty"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_item_list"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="@dimen/default_margin"
-                android:clickable="true"
-                android:focusableInTouchMode="true"
-                android:scrollbars="vertical"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:spanCount="2" />
-
-            <com.google.android.material.progressindicator.LinearProgressIndicator
-                android:id="@+id/prepend_progress"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:indeterminate="true"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <com.google.android.material.progressindicator.LinearProgressIndicator
-                android:id="@+id/append_progress"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:indeterminate="true"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+       <include
+           android:id="@+id/layout_item_list"
+           android:layout_width="match_parent"
+           android:layout_height="0dp"
+           android:layout_marginTop="@dimen/top_screen_margin"
+           app:layout_constraintBottom_toBottomOf="parent"
+           app:layout_constraintTop_toBottomOf="@id/cl_top_search"
+           layout="@layout/layout_item_list"
+           />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
