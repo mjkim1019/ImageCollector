@@ -1,8 +1,11 @@
 <resources>
     <string name="app_name">ImageCollector</string>
 
-    <!-- Search Screen -->
+    <!-- Search Fragment -->
     <string name="search_cancel">취소</string>
+
+    <!-- Storage Fragment -->
+    <string name="storage_title">내 보관함</string>
 
     <!-- Empty Layout -->
     <string name="empty_info_input">검색어를 입력해주세요😀</string>
