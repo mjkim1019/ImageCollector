@@ -1,8 +1,8 @@
 package com.kakaobank.imagecollector.data
 
+import com.kakaobank.imagecollector.data.model.ImageSearchResponse
+import com.kakaobank.imagecollector.data.model.VideoSearchResponse
 import com.kakaobank.imagecollector.models.ApiResult
-import com.kakaobank.imagecollector.models.ImageSearchResponse
-import com.kakaobank.imagecollector.models.VideoSearchResponse
 import com.kakaobank.imagecollector.models.safeFlow
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow

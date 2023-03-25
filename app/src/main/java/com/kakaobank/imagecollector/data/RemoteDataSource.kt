@@ -1,9 +1,9 @@
 package com.kakaobank.imagecollector.data
 
+import com.kakaobank.imagecollector.data.model.ImageSearchResponse
+import com.kakaobank.imagecollector.data.model.VideoSearchResponse
 import kotlinx.coroutines.flow.Flow
 import com.kakaobank.imagecollector.models.ApiResult
-import com.kakaobank.imagecollector.models.ImageSearchResponse
-import com.kakaobank.imagecollector.models.VideoSearchResponse
 
 interface RemoteDataSource {
     suspend fun searchImages(

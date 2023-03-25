@@ -1,7 +1,7 @@
 package com.kakaobank.imagecollector.data
 
-import com.kakaobank.imagecollector.models.ImageSearchResponse
-import com.kakaobank.imagecollector.models.VideoSearchResponse
+import com.kakaobank.imagecollector.data.model.ImageSearchResponse
+import com.kakaobank.imagecollector.data.model.VideoSearchResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 

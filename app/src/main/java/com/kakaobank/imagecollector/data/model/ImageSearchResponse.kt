@@ -1,4 +1,4 @@
-package com.kakaobank.imagecollector.models
+package com.kakaobank.imagecollector.data.model
 
 import com.squareup.moshi.Json
 
