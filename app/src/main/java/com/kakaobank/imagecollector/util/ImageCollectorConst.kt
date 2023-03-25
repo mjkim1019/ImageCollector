@@ -18,6 +18,7 @@ object ImageCollectorConst {
      */
     const val LAST_SEARCH_QUERY = "last_search_query"
     const val LAST_QUERY_SCROLLED = "last_query_scrolled"
+    const val DEFAULT_QUERY = "카카오뱅크"
 
     /**
      * DEBUG
