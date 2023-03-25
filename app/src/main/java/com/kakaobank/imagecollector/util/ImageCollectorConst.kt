@@ -11,7 +11,7 @@ object ImageCollectorConst {
      * API
      */
     const val RECENCY = "recency" // 최신순
-    const val NETWORK_PAGE_SIZE = 30
+    const val NETWORK_PAGE_SIZE = 50
 
     /**
      * DEBUG
