@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <import type="android.view.View"/>
+
+        <import type="android.view.View" />
+
         <variable
             name="vm"
             type="com.kakaobank.imagecollector.ui.viewmodels.SearchViewModel" />
@@ -14,8 +16,8 @@
         android:layout_height="match_parent"
         android:background="@color/yellow_99"
         android:clickable="true"
-        android:focusableInTouchMode="true"
-        android:focusable="true">
+        android:focusable="true"
+        android:focusableInTouchMode="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_top_search"
@@ -52,27 +54,27 @@
                     android:layout_height="match_parent"
                     android:background="@null"
                     android:imeOptions="actionSearch"
+                    android:includeFontPadding="false"
                     android:inputType="text"
                     android:onTextChanged="@{vm.onSearchWordChanged}"
                     android:paddingHorizontal="2dp"
+                    android:text="@{vm.searchWord}"
+                    android:textCursorDrawable="@drawable/ic_cursor_black"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/btn_clear"
-                    app:layout_constraintStart_toEndOf="@id/iv_search"
-                    android:text="@{vm.searchWord}"
-                    android:includeFontPadding="false"/>
+                    app:layout_constraintStart_toEndOf="@id/iv_search" />
 
                 <ImageView
                     android:id="@+id/btn_clear"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:paddingHorizontal="2dp"
-                    android:src="@drawable/ic_x"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:tint="@color/grey_20"
-                    android:visibility="@{vm.isSearching ? View.VISIBLE : View.INVISIBLE, default = gone}"
                     android:clickable="true"
                     android:onClickListener="@{vm.onClickClearBtn}"
-                    />
+                    android:paddingHorizontal="2dp"
+                    android:src="@drawable/ic_x"
+                    android:visibility="@{vm.isSearching ? View.VISIBLE : View.INVISIBLE, default = gone}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:tint="@color/grey_20" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -86,7 +88,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:tint="@color/red_60"/>
+                app:tint="@color/red_60" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -95,11 +97,11 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/top_screen_margin"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cl_top_search"
             android:clickable="true"
+            android:focusable="true"
             android:focusableInTouchMode="true"
-            android:focusable="true">
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_top_search">
 
             <include
                 android:id="@+id/layout_empty"
@@ -111,12 +113,12 @@
                 android:id="@+id/rv_item_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:spanCount="2"
+                android:layout_marginHorizontal="@dimen/default_margin"
                 android:clickable="true"
                 android:focusableInTouchMode="true"
-                android:layout_marginHorizontal="@dimen/default_margin"
-                android:scrollbars="vertical"/>
+                android:scrollbars="vertical"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="2" />
 
             <com.google.android.material.progressindicator.LinearProgressIndicator
                 android:id="@+id/prepend_progress"
