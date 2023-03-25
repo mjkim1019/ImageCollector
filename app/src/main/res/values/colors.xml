@@ -16,4 +16,5 @@
     <color name="grey_20">#524E5A</color>
     <color name="highlight">#0C6DFF</color>
     <color name="negative_20">#E93B65</color>
+    <color name="transparent">#00000000</color>
 </resources>
