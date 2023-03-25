@@ -12,6 +12,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.Dispatchers
 import okhttp3.*
+import okhttp3.ResponseBody.Companion.toResponseBody
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -37,7 +38,8 @@ class NetworkModule {
                 .request(request)
                 .protocol(Protocol.HTTP_1_1)
                 .code(ImageCollectorConst.NETWORK_ERROR)
-                .body(ResponseBody.create(null, e.message ?: ""))
+                .body((e.message ?: "").toResponseBody(null))
+                .message(e.message.toString())
                 .build()
         }
     }
