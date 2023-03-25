@@ -35,7 +35,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
     }
 
     override fun viewCreated() {
-        binding.layoutItemList.screenType = ScreenType.SEARCH_SCREEN
+        binding.layoutItemList.layoutEmpty.screenType = ScreenType.SEARCH_SCREEN
         binding.layoutItemList.layoutEmpty.root.bringToFront()
         binding.layoutItemList.layoutEmpty.emptyState = EmptyState.NOT_YET
         bindState(

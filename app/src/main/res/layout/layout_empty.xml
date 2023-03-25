@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
         <import type="android.view.View" />
 
+        <import type="com.kakaobank.imagecollector.ui.model.ScreenType" />
+
         <import type="com.kakaobank.imagecollector.ui.model.EmptyState" />
+
+        <variable
+            name="screenType"
+            type="ScreenType" />
 
         <variable
             name="emptyState"
@@ -18,28 +25,24 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/InfoMessage.V45"
             android:text="@string/empty_info_input"
-            android:textColor="@color/black"
-            android:visibility="@{emptyState == EmptyState.NOT_YET ? View.VISIBLE : View.GONE, default = visible}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.45"/>
+            android:visibility="@{screenType == ScreenType.SEARCH_SCREEN &amp;&amp; emptyState == EmptyState.NOT_YET ? View.VISIBLE : View.GONE, default = visible}"
+            app:layout_constraintVertical_bias="0.45"
+            tools:ignore="MissingConstraints" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/InfoMessage.V45"
             android:text="@string/empty_info_none"
-            android:textColor="@color/black"
-            android:visibility="@{emptyState == EmptyState.NO_RESULT ? View.VISIBLE : View.GONE, default = gone}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.45"/>
+            android:visibility="@{screenType == ScreenType.SEARCH_SCREEN &amp;&amp; emptyState == EmptyState.NO_RESULT ? View.VISIBLE : View.GONE, default = gone}"
+            app:layout_constraintVertical_bias="0.45"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            style="@style/InfoMessage.V45"
+            android:text="@string/empty_info_storage"
+            android:visibility="@{screenType == ScreenType.STORAGE_SCREEN &amp;&amp; emptyState == EmptyState.NO_RESULT}"
+            tools:ignore="MissingConstraints" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

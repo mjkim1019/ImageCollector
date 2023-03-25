@@ -4,10 +4,6 @@
 
     <data>
         <import type="android.view.View"/>
-        <import type="com.kakaobank.imagecollector.ui.model.ScreenType"/>
-        <variable
-            name="screenType"
-            type="ScreenType" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,8 +15,7 @@
             android:id="@+id/layout_empty"
             layout="@layout/layout_empty"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="@{screenType == ScreenType.SEARCH_SCREEN ? View.VISIBLE: View.GONE}"/>
+            android:layout_height="match_parent"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_item_list"
