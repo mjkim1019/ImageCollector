@@ -14,6 +14,12 @@ object ImageCollectorConst {
     const val NETWORK_PAGE_SIZE = 50
 
     /**
+     * Search UI
+     */
+    const val LAST_SEARCH_QUERY = "last_search_query"
+    const val LAST_QUERY_SCROLLED = "last_query_scrolled"
+
+    /**
      * DEBUG
      */
     const val DEBUG_SEARCH_FRAGMENT = "SEARCH_FRAGMENT"
