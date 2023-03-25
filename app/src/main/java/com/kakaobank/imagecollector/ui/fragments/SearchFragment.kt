@@ -5,6 +5,7 @@ import android.view.KeyEvent
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.paging.LoadState
 import androidx.paging.PagingData
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -104,8 +105,23 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
                 if (dy != 0) onScrollChanged(UiAction.Scroll(currentQuery = viewModel.state.value.query))
             }
         })
+        val notLoading = adapter.loadStateFlow
+            .distinctUntilChangedBy { it.source.refresh }
+            .map { it.source.refresh is LoadState.NotLoading }
+        val hasNotScrolledForCurrentSearch = uiState
+            .map { it.hasNotScrolledForCurrentSearch }
+            .distinctUntilChanged()
+        val shouldScrollToTop = combine(
+            notLoading, hasNotScrolledForCurrentSearch, Boolean::and
+        ).distinctUntilChanged()
+
         lifecycleScope.launch {
             pagingData.collectLatest { adapter.submitData(it) }
+        }
+        lifecycleScope.launch {
+            shouldScrollToTop.collectLatest {
+                if(it) binding.rvItemList.scrollToPosition(0)
+            }
         }
     }
 
