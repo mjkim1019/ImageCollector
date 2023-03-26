@@ -19,7 +19,7 @@ git clone 'https://github.com/mjkim1019/ImageCollector.git'
 
 ## 📌 Results
 https://drive.google.com/file/d/13tYiwwf9cpeewiN9pa8L4xaWOEzkkLr_/view?usp=share_link
-위 링크를 들어가시면 앱이 작동하는 모습을 볼 수 있습니다 :)
+</br> 위 링크를 들어가시면 앱이 작동하는 모습을 볼 수 있습니다 :)
 
 ## 📌 기능 설명
 ### 🔍 검색 기능
