@@ -1,10 +1,10 @@
 package com.kakaobank.imagecollector.ui.viewmodels
 
-import com.kakaobank.imagecollector.base.BaseViewModel
+import androidx.lifecycle.ViewModel
 import com.kakaobank.imagecollector.model.Item
 import com.kakaobank.imagecollector.util.SharedPrefsManager
 
-class StorageViewModel : BaseViewModel() {
+class StorageViewModel : ViewModel() {
     private var _favoriteList: List<Item> = listOf()
     val favoriteList get() = _favoriteList
 

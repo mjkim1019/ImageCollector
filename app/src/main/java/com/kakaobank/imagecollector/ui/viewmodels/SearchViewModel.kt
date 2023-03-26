@@ -3,10 +3,10 @@ package com.kakaobank.imagecollector.ui.viewmodels
 import android.util.Log
 import android.view.View
 import androidx.lifecycle.SavedStateHandle
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.kakaobank.imagecollector.base.BaseViewModel
 import com.kakaobank.imagecollector.data.Repository
 import com.kakaobank.imagecollector.model.Item
 import com.kakaobank.imagecollector.ui.model.UiAction
@@ -24,7 +24,7 @@ import javax.inject.Inject
 class SearchViewModel @Inject constructor(
     private val repository: Repository,
     private val savedStateHandle: SavedStateHandle
-) : BaseViewModel() {
+) : ViewModel() {
     private val _searchWord: MutableStateFlow<String> = MutableStateFlow("")
     val searchWord: StateFlow<String> get() = _searchWord
 
