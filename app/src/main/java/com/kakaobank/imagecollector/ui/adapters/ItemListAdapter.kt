@@ -7,7 +7,7 @@ import com.kakaobank.imagecollector.databinding.ItemItemBinding
 import com.kakaobank.imagecollector.models.Item
 
 class ItemListAdapter : RecyclerView.Adapter<ItemViewHolder>() {
-    private var itemList: MutableList<Item> = mutableListOf()
+    private var itemList: ArrayList<Item> = arrayListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         return ItemViewHolder(
@@ -24,7 +24,7 @@ class ItemListAdapter : RecyclerView.Adapter<ItemViewHolder>() {
     override fun getItemCount(): Int = itemList.size
 
 
-    fun submitList(list: MutableList<Item>) {
-        itemList = list
+    fun submitList(list: List<Item>) {
+        itemList = list as ArrayList<Item>
     }
 }

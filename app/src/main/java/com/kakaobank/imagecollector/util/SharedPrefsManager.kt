@@ -13,7 +13,6 @@ import com.kakaobank.imagecollector.util.ImageCollectorConst.PREFS_DEFAULT_RESUL
 import com.kakaobank.imagecollector.util.ImageCollectorConst.PREFS_STORAGE
 import com.kakaobank.imagecollector.util.ImageCollectorConst.WARNING_PREFS
 import java.time.LocalDateTime
-import java.util.LinkedList
 
 object SharedPrefsManager {
     private lateinit var prefs: SharedPreferences
@@ -24,7 +23,7 @@ object SharedPrefsManager {
         .registerTypeAdapter(LocalDateTime::class.java, localDateTimeSerializer)
         .create()
 
-    private var favoriteList: LinkedList<Item> = LinkedList()
+    private var favoriteList: LinkedHashMap<String, Item> = linkedMapOf()
 
     fun init(context: Context) {
         prefs = context.getSharedPreferences(BuildConfig.APPLICATION_ID, Context.MODE_PRIVATE)
@@ -32,13 +31,13 @@ object SharedPrefsManager {
     }
 
     fun addItemInFavoriteList(item: Item) {
-        if (item.savedDateTime != null) favoriteList.add(item)
-        favoriteList.sortByDescending { it.savedDateTime }
+        if (item.savedDateTime != null) favoriteList[item.imgUrl] = item
+        //favoriteList.sortByDescending { it.savedDateTime }
         applyFavoriteListInPrefs()
     }
 
     fun removeItemInFavoriteList(item: Item) {
-        favoriteList.remove(item)
+        favoriteList.remove(item.imgUrl)
         applyFavoriteListInPrefs()
     }
 
@@ -48,13 +47,13 @@ object SharedPrefsManager {
         prefsEditor.commit()
     }
 
-    fun setFavoriteListFromPrefs(): LinkedList<Item> {
+    fun setFavoriteListFromPrefs() {
         val favoriteJson = prefs.getString(PREFS_STORAGE, PREFS_DEFAULT_RESULT)
         try {
-            val type = object : TypeToken<LinkedList<Item>>() {}.type
-            val list: LinkedList<Item> =
-                gson.fromJson(favoriteJson, type) as LinkedList<Item>
-            list.sortByDescending { it.savedDateTime }
+            val type = object : TypeToken<LinkedHashMap<String, Item>>() {}.type
+            val list: LinkedHashMap<String, Item> =
+                gson.fromJson(favoriteJson, type) as LinkedHashMap<String, Item>
+            //list.sortByDescending { it.savedDateTime }
             favoriteList = list
             getFavoriteList()
         } catch (e: ClassCastException) {
@@ -64,12 +63,10 @@ object SharedPrefsManager {
         } catch (e: Exception) {
             Log.e(ERROR_PREFS, "setFavoriteListFromPrefs(): ${e.message}")
         }
-
-        return favoriteList
     }
 
-    fun getFavoriteList(): LinkedList<Item> {
-        Log.d(DEBUG_PREFS, "getFavoriteList: ${favoriteList.size}\n ${favoriteList.map { it.savedDateTime }}")
+    fun getFavoriteList(): LinkedHashMap<String, Item> {
+        Log.d(DEBUG_PREFS, "getFavoriteList: ${favoriteList.size}\n ${favoriteList}")
         return favoriteList
     }
 

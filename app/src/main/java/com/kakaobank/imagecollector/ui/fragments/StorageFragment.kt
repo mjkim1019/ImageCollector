@@ -35,7 +35,7 @@ class StorageFragment : BaseFragment<FragmentStorageBinding>(R.layout.fragment_s
         binding.layoutItemList.layoutEmpty.emptyState = EmptyState.NO_RESULT
     }
 
-    private fun bindAdapter(itemList: MutableList<Item>) {
+    private fun bindAdapter(itemList: List<Item>) {
         val itemListAdapter = ItemListAdapter()
         binding.layoutItemList.rvItemList.apply {
             adapter = itemListAdapter
@@ -44,7 +44,7 @@ class StorageFragment : BaseFragment<FragmentStorageBinding>(R.layout.fragment_s
         bindList(adapter = itemListAdapter, itemList = itemList)
     }
 
-    private fun bindList(adapter: ItemListAdapter, itemList: MutableList<Item>) {
+    private fun bindList(adapter: ItemListAdapter, itemList: List<Item>) {
 
         adapter.submitList(itemList)
 
