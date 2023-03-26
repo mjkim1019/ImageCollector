@@ -27,7 +27,9 @@ class ItemViewHolder(
             btnFavorite.setOnClickListener {
                 image.isFavorite = !image.isFavorite
                 if (image.isFavorite) SharedPrefsManager.addItemInFavoriteList(image)
+                else SharedPrefsManager.removeItemInFavoriteList(image)
             }
+
         }
     }
 

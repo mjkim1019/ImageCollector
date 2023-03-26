@@ -31,6 +31,11 @@ object SharedPrefsManager {
         applyFavoriteListInPrefs()
     }
 
+    fun removeItemInFavoriteList(item: Item) {
+        favoriteList.remove(item)
+        applyFavoriteListInPrefs()
+    }
+
     private fun applyFavoriteListInPrefs() {
         val favoriteJson = gson.toJson(favoriteList)
         prefsEditor.putString(PREFS_STORAGE, favoriteJson)
