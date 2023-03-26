@@ -10,6 +10,7 @@ import com.kakaobank.imagecollector.models.Item
 import com.kakaobank.imagecollector.util.DateFormatter
 import com.kakaobank.imagecollector.util.ImageCollectorConst.DEBUG_ITEM_VIEWHOLDER
 import com.kakaobank.imagecollector.util.SharedPrefsManager
+import java.time.LocalDateTime
 
 class ItemViewHolder(
     private val binding: ItemItemBinding
@@ -34,8 +35,15 @@ class ItemViewHolder(
                 isFavorite = _newIsFavorite
                 image.isFavorite = _newIsFavorite
                 Log.d(DEBUG_ITEM_VIEWHOLDER, "btnFavorite clicked ${isFavorite}")
-                if (image.isFavorite) SharedPrefsManager.addItemInFavoriteList(image)
-                else SharedPrefsManager.removeItemInFavoriteList(image)
+                if (image.isFavorite) {
+                    val currentDateTime = DateFormatter.convertToLocalDateTime(LocalDateTime.now())
+                    image.savedDateTime = currentDateTime
+                    SharedPrefsManager.addItemInFavoriteList(image)
+                }
+                else {
+                    image.savedDateTime = null
+                    SharedPrefsManager.removeItemInFavoriteList(image)
+                }
             }
 
         }
