@@ -2,6 +2,7 @@ package com.kakaobank.imagecollector.ui.fragments
 
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.kakaobank.imagecollector.R
 import com.kakaobank.imagecollector.base.BaseFragment
@@ -25,6 +26,7 @@ class StorageFragment : BaseFragment<FragmentStorageBinding>(R.layout.fragment_s
     override fun viewCreated() {
         initView()
         bindAdapter(itemList = viewModel.favoriteList)
+        setListener()
     }
 
     private fun initView() {
@@ -52,6 +54,12 @@ class StorageFragment : BaseFragment<FragmentStorageBinding>(R.layout.fragment_s
             } else {
                 binding.layoutItemList.layoutEmpty.emptyState = EmptyState.NO_RESULT
             }
+        }
+    }
+
+    private fun setListener(){
+        binding.btnBack.setOnClickListener {
+            findNavController().popBackStack()
         }
     }
 

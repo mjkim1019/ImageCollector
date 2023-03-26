@@ -30,6 +30,7 @@
                 tools:ignore="MissingConstraints" />
 
             <ImageView
+                android:id="@+id/btn_back"
                 style="@style/VerticalCenter"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
