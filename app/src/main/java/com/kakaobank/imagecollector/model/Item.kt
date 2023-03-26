@@ -1,4 +1,4 @@
-package com.kakaobank.imagecollector.models
+package com.kakaobank.imagecollector.model
 
 import java.time.LocalDateTime
 

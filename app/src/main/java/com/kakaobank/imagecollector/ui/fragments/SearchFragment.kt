@@ -14,7 +14,7 @@ import com.kakaobank.imagecollector.R
 import com.kakaobank.imagecollector.ui.adapters.ItemPagingAdapter
 import com.kakaobank.imagecollector.base.BaseFragment
 import com.kakaobank.imagecollector.databinding.FragmentSearchBinding
-import com.kakaobank.imagecollector.models.Item
+import com.kakaobank.imagecollector.model.Item
 import com.kakaobank.imagecollector.ui.model.EmptyState
 import com.kakaobank.imagecollector.ui.model.ScreenType
 import com.kakaobank.imagecollector.ui.model.UiAction

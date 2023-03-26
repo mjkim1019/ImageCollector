@@ -1,7 +1,6 @@
 package com.kakaobank.imagecollector.di
 
 import com.kakaobank.imagecollector.data.ApiService
-import com.kakaobank.imagecollector.data.RemoteDataSourceImpl
 import com.kakaobank.imagecollector.data.Repository
 import dagger.Module
 import dagger.Provides

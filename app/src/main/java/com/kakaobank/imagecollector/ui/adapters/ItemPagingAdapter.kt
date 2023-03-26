@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.kakaobank.imagecollector.databinding.ItemItemBinding
-import com.kakaobank.imagecollector.models.Item
+import com.kakaobank.imagecollector.model.Item
 
 class ItemPagingAdapter :
     PagingDataAdapter<Item, ItemViewHolder>(ITEM_DIFF_CALLBACK) {

@@ -4,13 +4,12 @@ import android.util.Log
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.kakaobank.imagecollector.models.Item
+import com.kakaobank.imagecollector.model.Item
 import com.kakaobank.imagecollector.util.ImageCollectorConst.DEBUG_DATA
 import com.kakaobank.imagecollector.util.ImageCollectorConst.NETWORK_PAGE_SIZE
 import com.kakaobank.imagecollector.util.SharedPrefsManager
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
-import kotlin.collections.LinkedHashMap
 
 class Repository @Inject constructor(
     private val apiService: ApiService

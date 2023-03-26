@@ -6,7 +6,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.kakaobank.imagecollector.databinding.ItemItemBinding
-import com.kakaobank.imagecollector.models.Item
+import com.kakaobank.imagecollector.model.Item
 import com.kakaobank.imagecollector.util.DateFormatter
 import com.kakaobank.imagecollector.util.ImageCollectorConst.DEBUG_ITEM_VIEWHOLDER
 import com.kakaobank.imagecollector.util.SharedPrefsManager

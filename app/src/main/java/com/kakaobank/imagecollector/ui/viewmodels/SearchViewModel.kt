@@ -8,7 +8,7 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.kakaobank.imagecollector.base.BaseViewModel
 import com.kakaobank.imagecollector.data.Repository
-import com.kakaobank.imagecollector.models.Item
+import com.kakaobank.imagecollector.model.Item
 import com.kakaobank.imagecollector.ui.model.UiAction
 import com.kakaobank.imagecollector.ui.model.UiState
 import com.kakaobank.imagecollector.util.ImageCollectorConst.DEBUG_SEARCH_VIEWMODEL
