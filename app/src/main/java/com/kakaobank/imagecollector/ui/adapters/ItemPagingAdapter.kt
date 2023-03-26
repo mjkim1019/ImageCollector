@@ -13,38 +13,17 @@ import com.kakaobank.imagecollector.models.Item
 import com.kakaobank.imagecollector.util.DateFormatter.convertLocalDateTimeToItemDateTime
 
 class ItemPagingAdapter(private val onClick: () -> Unit) :
-    PagingDataAdapter<Item, ItemPagingAdapter.ViewHolder>(
-        ITEM_DIFF_CALLBACK
-    ) {
-    inner class ViewHolder(private val binding: ItemItemBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun bind(image: Item) {
-            val dateTimeArray = convertLocalDateTimeToItemDateTime(image.dateTime)
-            binding.apply {
-                Glide.with(binding.root)
-                    .load(image.imgUrl)
-                    .apply(RequestOptions.bitmapTransform(RoundedCorners(12)))
-                    .into(ivImage)
-                date = dateTimeArray[0]
-                time = dateTimeArray[1]
-                isFavorite = image.isFavorite
-            }
-        }
+    PagingDataAdapter<Item, ItemViewHolder>(ITEM_DIFF_CALLBACK) {
 
-        init {
-            binding.btnFavorite.setOnClickListener { onClick }
-        }
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
+        return ItemViewHolder(
             ItemItemBinding.inflate(
                 LayoutInflater.from(parent.context), parent, false
-            )
+            ), onClick
         )
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         getItem(position)?.let { holder.bind(it) }
     }
 
