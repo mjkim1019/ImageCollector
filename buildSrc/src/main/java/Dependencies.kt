@@ -17,6 +17,7 @@ object Versions {
 
     // Other Libraries
     const val GLIDE = "4.15.0"
+    const val GSON = "2.10.1"
 
     // Hilt
     const val HILT = "2.44"
@@ -54,6 +55,7 @@ object Libraries {
     const val MOSHI_KOTLIN = "com.squareup.moshi:moshi-kotlin:${Versions.MOSHI}"
     const val GLIDE = "com.github.bumptech.glide:glide:${Versions.GLIDE}"
     const val GLIDE_COMPILER = "com.github.bumptech.glide:compiler:${Versions.GLIDE}"
+    const val GSON = "com.google.code.gson:gson:${Versions.GSON}"
 }
 
 object UnitTest {
