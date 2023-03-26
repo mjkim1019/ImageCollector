@@ -21,12 +21,11 @@ class ImagePagingSource (
         return try{
             val response = apiService.searchImage(query, ImageCollectorConst.RECENCY, position, params.loadSize)
             val items = response.documents.map {
-                val dateTimeArray = DateFormatter.convertToItemDateAndTime(it.datetime)
+                val localDateTime = DateFormatter.convertToLocalDateTime(it.datetime)
                 Item(
                     id =0,
                     imgUrl = it.imageUrl,
-                    date = dateTimeArray[0],
-                    time = dateTimeArray[1],
+                    dateTime = localDateTime,
                 )
             }
             val nextKey = if (response.meta.isEnd) null

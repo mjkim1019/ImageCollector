@@ -8,7 +8,7 @@ object DateFormatter {
     private const val itemDatePattern = "yyyy년 MM월 dd일"
     private const val itemTimePattern = "hh:mm a"
 
-    fun convertToItemDateAndTime(date: String): LocalDateTime {
+    fun convertToLocalDateTime(date: String): LocalDateTime {
         val parseDate: OffsetDateTime =
             OffsetDateTime.parse(date, DateTimeFormatter.ISO_OFFSET_DATE_TIME)
 
