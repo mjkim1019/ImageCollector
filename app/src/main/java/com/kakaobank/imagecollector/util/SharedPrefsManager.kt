@@ -18,7 +18,25 @@ import java.util.LinkedList
 object SharedPrefsManager {
     private lateinit var prefs: SharedPreferences
     private lateinit var prefsEditor: SharedPreferences.Editor
-    private val gson = Gson()
+    val deserializer =
+        JsonDeserializer<LocalDateTime> { json, typeOfT, context ->
+            LocalDateTime.parse(
+                json?.asString,
+                DateFormatter.defaultFormatter
+            )
+        }
+    val serializer =
+        JsonSerializer<LocalDateTime> { src, typeOfSrc, context ->
+            JsonPrimitive(
+                DateFormatter.defaultFormatter.format(
+                    src
+                )
+            )
+        }
+    private val gson: Gson = GsonBuilder()
+        .registerTypeAdapter(LocalDateTime::class.java, deserializer)
+        .registerTypeAdapter(LocalDateTime::class.java, serializer)
+        .create()
 
     private var favoriteList: LinkedList<Item> = LinkedList()
 

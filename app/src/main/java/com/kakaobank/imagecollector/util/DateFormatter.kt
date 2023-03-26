@@ -5,10 +5,12 @@ import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter
 
 object DateFormatter {
-    private const val defaultLocalDateTimePattern = "yyyy-MM-dd'T'HH:mm"
+    const val defaultLocalDateTimePattern = "yyyy-MM-dd'T'HH:mm"
     private const val nowLocalDateTimePattern = "$defaultLocalDateTimePattern:ss.SSS"
     private const val itemDatePattern = "yyyy년 MM월 dd일"
     private const val itemTimePattern = "hh:mm a"
+
+    val defaultFormatter = DateTimeFormatter.ofPattern(defaultLocalDateTimePattern)
 
     fun convertToLocalDateTime(date: String): LocalDateTime {
         val parseDate: OffsetDateTime =
@@ -19,8 +21,7 @@ object DateFormatter {
 
     fun convertToLocalDateTime(dateTime: LocalDateTime): LocalDateTime {
         // localtime -> 원하는 format string
-        val formatter = DateTimeFormatter.ofPattern(defaultLocalDateTimePattern)
-        val formattedDateTime = formatter.format(dateTime)
+        val formattedDateTime = defaultFormatter.format(dateTime)
 
         // string -> localDateTime
         val outputDateTime = LocalDateTime.parse(formattedDateTime)
