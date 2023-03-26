@@ -49,6 +49,7 @@ object SharedPrefsManager {
 
     fun setFavoriteListFromPrefs() {
         val favoriteJson = prefs.getString(PREFS_STORAGE, PREFS_DEFAULT_RESULT)
+        if (favoriteJson == PREFS_DEFAULT_RESULT) return
         try {
             val type = object : TypeToken<LinkedHashMap<String, Item>>() {}.type
             val list: LinkedHashMap<String, Item> =
