@@ -32,5 +32,6 @@ object ImageCollectorConst {
     const val DEBUG_SEARCH_FRAGMENT = "DEBUG_SearchFragment"
     const val DEBUG_SEARCH_VIEWMODEL = "DEBUG_SearchViewModel"
     const val DEBUG_DATE_FORMATTER = "DEBUG_DateFormatter"
+    const val DEBUG_ITEM_VIEWHOLDER = "DEBUG_ItemViewHolder"
     const val ERROR_PREFS = "ERROR_Prefs"
 }

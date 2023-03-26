@@ -7,5 +7,5 @@ data class Item(
     val imgUrl: String, // image url
     val dateTime: LocalDateTime,
     var isFavorite: Boolean = false, // 보관함에 저장 여부
-    var savedDateTime: LocalDateTime? // 보관함에 저장된 날짜
+    var savedDateTime: LocalDateTime? = null // 보관함에 저장된 날짜
 )
