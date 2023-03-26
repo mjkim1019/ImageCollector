@@ -7,14 +7,14 @@ import androidx.recyclerview.widget.ListAdapter
 import com.kakaobank.imagecollector.databinding.ItemItemBinding
 import com.kakaobank.imagecollector.models.Item
 
-class ItemListAdapter(private val onClick: () -> Unit) :
+class ItemListAdapter :
     ListAdapter<Item, ItemViewHolder>(ITEM_DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         return ItemViewHolder(
             ItemItemBinding.inflate(
                 LayoutInflater.from(parent.context), parent, false
-            ), onClick
+            )
         )
     }
 

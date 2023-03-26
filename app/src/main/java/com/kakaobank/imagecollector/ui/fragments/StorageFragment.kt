@@ -36,9 +36,7 @@ class StorageFragment : BaseFragment<FragmentStorageBinding>(R.layout.fragment_s
     }
 
     private fun bindAdapter(itemListFlow: StateFlow<MutableList<Item>>) {
-        val itemListAdapter = ItemListAdapter {
-            // todo click favorite
-        }
+        val itemListAdapter = ItemListAdapter()
         binding.layoutItemList.rvItemList.apply {
             adapter = itemListAdapter
             layoutManager = GridLayoutManager(this.context, 2)

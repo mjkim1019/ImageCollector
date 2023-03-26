@@ -56,9 +56,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
         pagingData: Flow<PagingData<Item>>,
         uiActions: (UiAction) -> Unit
     ) {
-        val itemPagingAdapter = ItemPagingAdapter {
-            // todo click 했을 때 어떻게 할지
-        }
+        val itemPagingAdapter = ItemPagingAdapter()
         binding.layoutItemList.rvItemList.apply {
             adapter = itemPagingAdapter
             layoutManager = GridLayoutManager(this.context, 2)

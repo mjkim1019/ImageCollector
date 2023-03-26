@@ -7,10 +7,10 @@ import com.bumptech.glide.request.RequestOptions
 import com.kakaobank.imagecollector.databinding.ItemItemBinding
 import com.kakaobank.imagecollector.models.Item
 import com.kakaobank.imagecollector.util.DateFormatter
+import com.kakaobank.imagecollector.util.SharedPrefsManager
 
 class ItemViewHolder(
-    private val binding: ItemItemBinding,
-    private val onClick: () -> Unit
+    private val binding: ItemItemBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(image: Item) {
@@ -23,10 +23,12 @@ class ItemViewHolder(
             date = dateTimeArray[0]
             time = dateTimeArray[1]
             isFavorite = image.isFavorite
+
+            btnFavorite.setOnClickListener {
+                image.isFavorite = !image.isFavorite
+                if (image.isFavorite) SharedPrefsManager.addItemInFavoriteList(image)
+            }
         }
     }
 
-    init {
-        binding.btnFavorite.setOnClickListener { onClick }
-    }
 }
