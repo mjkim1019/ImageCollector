@@ -33,7 +33,7 @@ object SharedPrefsManager {
 
     fun addItemInFavoriteList(item: Item) {
         if (item.savedDateTime != null) favoriteList.add(item)
-        favoriteList.sortBy { it.savedDateTime }
+        favoriteList.sortByDescending { it.savedDateTime }
         applyFavoriteListInPrefs()
     }
 
@@ -44,19 +44,17 @@ object SharedPrefsManager {
 
     private fun applyFavoriteListInPrefs() {
         val favoriteJson = gson.toJson(favoriteList)
-        Log.d(DEBUG_PREFS, "applyFavoriteListInPrefs: ${favoriteJson}\n${favoriteList}")
         prefsEditor.putString(PREFS_STORAGE, favoriteJson)
         prefsEditor.commit()
     }
 
     fun setFavoriteListFromPrefs(): LinkedList<Item> {
         val favoriteJson = prefs.getString(PREFS_STORAGE, PREFS_DEFAULT_RESULT)
-        Log.d(DEBUG_PREFS, "favoriteJson: ${favoriteJson}")
         try {
             val type = object : TypeToken<LinkedList<Item>>() {}.type
             val list: LinkedList<Item> =
                 gson.fromJson(favoriteJson, type) as LinkedList<Item>
-            list.sortBy { it.savedDateTime }
+            list.sortByDescending { it.savedDateTime }
             favoriteList = list
             getFavoriteList()
         } catch (e: ClassCastException) {
@@ -71,7 +69,7 @@ object SharedPrefsManager {
     }
 
     fun getFavoriteList(): LinkedList<Item> {
-        Log.d(DEBUG_PREFS, "getFavoriteList: ${favoriteList.size}\n ${favoriteList}")
+        Log.d(DEBUG_PREFS, "getFavoriteList: ${favoriteList.size}\n ${favoriteList.map { it.savedDateTime }}")
         return favoriteList
     }
 

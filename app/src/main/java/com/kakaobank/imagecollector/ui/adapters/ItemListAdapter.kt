@@ -2,13 +2,12 @@ package com.kakaobank.imagecollector.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.kakaobank.imagecollector.databinding.ItemItemBinding
 import com.kakaobank.imagecollector.models.Item
 
-class ItemListAdapter :
-    ListAdapter<Item, ItemViewHolder>(ITEM_DIFF_CALLBACK) {
+class ItemListAdapter : RecyclerView.Adapter<ItemViewHolder>() {
+    private var itemList: MutableList<Item> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         return ItemViewHolder(
@@ -19,16 +18,13 @@ class ItemListAdapter :
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        getItem(position)?.let { holder.bind(it) }
+        holder.bind(itemList[position])
     }
 
-    companion object {
-        private val ITEM_DIFF_CALLBACK = object : DiffUtil.ItemCallback<Item>() {
-            override fun areItemsTheSame(oldItem: Item, newItem: Item): Boolean =
-                oldItem == newItem
+    override fun getItemCount(): Int = itemList.size
 
-            override fun areContentsTheSame(oldItem: Item, newItem: Item): Boolean =
-                oldItem.imgUrl == newItem.imgUrl
-        }
+
+    fun submitList(list: MutableList<Item>) {
+        itemList = list
     }
 }
