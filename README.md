@@ -1,9 +1,6 @@
 # ImageCollector
 이미지를 검색해서 보관함에 수집하는 안드로이드 앱
 
-# ImageCollector
-이미지를 검색해서 보관함에 수집하는 안드로이드 앱
-
 ## 📌 Getting Started
 ```
 git clone 'https://github.com/mjkim1019/ImageCollector.git'
@@ -21,9 +18,12 @@ git clone 'https://github.com/mjkim1019/ImageCollector.git'
 - **SharedPreference**: 앱 내 영구적으로 저장하기 위해 사용
 
 ## 📌 Results
+https://drive.google.com/file/d/13tYiwwf9cpeewiN9pa8L4xaWOEzkkLr_/view?usp=share_link
 
 ## 📌 Development Environment
 ```
-Android Studio: Electric Eel | 2022.1.1 Android Gradle Plugin: 7.4.1 Gradle Version: 7.6
+Android Studio: Electric Eel | 2022.1.1 
+Android Gradle Plugin: 7.4.1 
+Gradle Version: 7.6
 ```
 
