@@ -144,12 +144,13 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
                         binding.layoutItemList.layoutEmpty.emptyState = EmptyState.NOT_EMPTY
                     }
                 }
-                // page 이전 가져올 때 로딩 중 보여주기 위해
+                // page 이전/이후 가져올 때 로딩 중 보여주기 위해
                 val isPrepend = loadState.source.prepend is LoadState.Loading
-                binding.layoutItemList.prependProgress.isVisible = isPrepend
-                // page 이후 가져올 때 로딩 중 보여주기 위해
                 val isAppend = loadState.source.append is LoadState.Loading
+                binding.layoutItemList.prependProgress.isVisible = isPrepend
                 binding.layoutItemList.appendProgress.isVisible = isAppend
+
+                Log.d(DEBUG_SEARCH_FRAGMENT, "bindList: ${loadState}")
             }
         }
     }
