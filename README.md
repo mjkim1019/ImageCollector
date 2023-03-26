@@ -19,9 +19,10 @@ git clone 'https://github.com/mjkim1019/ImageCollector.git'
 
 ## 📌 Results
 https://drive.google.com/file/d/13tYiwwf9cpeewiN9pa8L4xaWOEzkkLr_/view?usp=share_link
+위 링크를 들어가시면 앱이 작동하는 모습을 볼 수 있습니다 :)
 
 ## 📌 기능 설명
-### 검색 기능
+### 🔍 검색 기능
 - 검색어를 입력하면 이미지 검색과 동영상 검색을 동시에 진행합니다
     - 이미지 검색 API ( https://developers.kakao.com/docs/latest/ko/daum-search/dev-guide#search-image )
     - 동영상 검색 API ( https://developers.kakao.com/docs/latest/ko/daum-search/dev-guide#search-video )
@@ -31,7 +32,7 @@ https://drive.google.com/file/d/13tYiwwf9cpeewiN9pa8L4xaWOEzkkLr_/view?usp=share
 - 이미 보관된 이미지는 분홍색 하트로 표시됩니다
 - 각 아이템의 하트 버튼을 통해 보관 또는 제거 가능합니다
 
-### 보관 기능 (내 보관함)
+### 📥 보관 기능 (내 보관함)
 - 상단 오른쪽의 하튼 버튼을 누르면 '내 보관함'으로 이동됩니다
 - 보관한 이미지들은 보관한 순서대로 보입니다
 - 하트 버튼을 누른 후 화면을 나가면 좋아요가 해제됩니다
