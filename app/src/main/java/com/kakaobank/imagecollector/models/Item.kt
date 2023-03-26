@@ -1,9 +1,11 @@
 package com.kakaobank.imagecollector.models
 
+import java.time.LocalDateTime
+
 data class Item(
     val id: Int,
     val imgUrl: String, // image url
-    val date: String, // yyyy년 mm월 dd일
-    val time: String, // HH:MM aa
-    var isFavorite: Boolean = false // 보관함에 저장 여부
+    val dateTime: LocalDateTime,
+    var isFavorite: Boolean = false, // 보관함에 저장 여부
+    var savedDateTime: LocalDateTime? = null // 보관함에 저장된 날짜
 )

@@ -11,7 +11,7 @@ import androidx.paging.PagingData
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.kakaobank.imagecollector.R
-import com.kakaobank.imagecollector.ui.adapters.ItemAdapter
+import com.kakaobank.imagecollector.ui.adapters.ItemPagingAdapter
 import com.kakaobank.imagecollector.base.BaseFragment
 import com.kakaobank.imagecollector.databinding.FragmentSearchBinding
 import com.kakaobank.imagecollector.models.Item
@@ -44,7 +44,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
         setListener()
     }
 
-    private fun initView(){
+    private fun initView() {
         binding.layoutItemList.layoutEmpty.screenType = ScreenType.SEARCH_SCREEN
         binding.layoutItemList.layoutEmpty.root.bringToFront()
         binding.layoutItemList.layoutEmpty.emptyState = EmptyState.NOT_YET
@@ -56,11 +56,9 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
         pagingData: Flow<PagingData<Item>>,
         uiActions: (UiAction) -> Unit
     ) {
-        val itemAdapter = ItemAdapter {
-            // todo click 했을 때 어떻게 할지
-        }
+        val itemPagingAdapter = ItemPagingAdapter()
         binding.layoutItemList.rvItemList.apply {
-            adapter = itemAdapter
+            adapter = itemPagingAdapter
             layoutManager = GridLayoutManager(this.context, 2)
         }
 
@@ -69,7 +67,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
             onQueryChanged = uiActions
         )
         bindList(
-            adapter = itemAdapter, uiState = uiState,
+            adapter = itemPagingAdapter, uiState = uiState,
             pagingData = pagingData,
             onScrollChanged = uiActions
         )
@@ -106,12 +104,13 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
     }
 
     private fun bindList(
-        adapter: ItemAdapter,
+        adapter: ItemPagingAdapter,
         uiState: StateFlow<UiState>,
         pagingData: Flow<PagingData<Item>>,
         onScrollChanged: (UiAction.Scroll) -> Unit
     ) {
-        binding.layoutItemList.rvItemList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+        binding.layoutItemList.rvItemList.addOnScrollListener(object :
+            RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 if (dy != 0) onScrollChanged(UiAction.Scroll(currentQuery = viewModel.state.value.query))
             }
@@ -139,7 +138,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
                 // 검색 결과가 없는지 아직 검색 전인지 보여주기 위해
                 val isDone = loadState.refresh is LoadState.NotLoading
                 if (isDone) {
-                    if (adapter.itemCount == 0){
+                    if (adapter.itemCount == 0) {
                         binding.layoutItemList.layoutEmpty.emptyState = EmptyState.NO_RESULT
                     } else {
                         binding.layoutItemList.layoutEmpty.emptyState = EmptyState.NOT_EMPTY

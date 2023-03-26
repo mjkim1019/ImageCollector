@@ -56,7 +56,7 @@
                     android:imeOptions="actionSearch"
                     android:includeFontPadding="false"
                     android:inputType="text"
-                    android:onTextChanged="@{vm.onSearchWordChanged}"
+                    android:onTextChanged="@{vm::onSearchWordChanged}"
                     android:paddingHorizontal="2dp"
                     android:text="@{vm.searchWord}"
                     android:textCursorDrawable="@drawable/ic_cursor_black"

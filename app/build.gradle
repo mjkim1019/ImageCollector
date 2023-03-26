@@ -53,6 +53,7 @@ dependencies {
     implementation Libraries.OKHTTP_LOGGING_INTERCEPTOR
     implementation Libraries.MOSHI_KOTLIN
     implementation Libraries.GLIDE
+    implementation Libraries.GSON
     annotationProcessor Libraries.GLIDE_COMPILER
 
     testImplementation UnitTest.JUNIT
