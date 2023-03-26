@@ -25,6 +25,6 @@ class ItemListAdapter : RecyclerView.Adapter<ItemViewHolder>() {
 
 
     fun submitList(list: List<Item>) {
-        if (list.isNotEmpty()) itemList = list as ArrayList<Item>
+        if (!list.isNullOrEmpty()) itemList = list as ArrayList<Item>
     }
 }
