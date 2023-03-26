@@ -1,31 +1,44 @@
 package com.kakaobank.imagecollector.data
 
+import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.kakaobank.imagecollector.models.Item
 import com.kakaobank.imagecollector.util.DateFormatter
 import com.kakaobank.imagecollector.util.ImageCollectorConst
+import com.kakaobank.imagecollector.util.ImageCollectorConst.DEBUG_DATA
 import com.kakaobank.imagecollector.util.ImageCollectorConst.NETWORK_PAGE_SIZE
 import okio.IOException
 import retrofit2.HttpException
 
-class ImagePagingSource (
+class ImagePagingSource(
     private val apiService: ApiService,
-    private val query: String
-): PagingSource<Int, Item>() {
+    private val query: String,
+    private val storageList: LinkedHashMap<String, Item>
+) : PagingSource<Int, Item>() {
 
     private val STARTING_PAGE_INDEX = 1
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Item> {
         val position = params.key ?: STARTING_PAGE_INDEX
-        return try{
-            val response = apiService.searchImage(query, ImageCollectorConst.RECENCY, position, params.loadSize)
+        var index = 0;
+        return try {
+            val response = apiService.searchImage(
+                query,
+                ImageCollectorConst.RECENCY,
+                position,
+                params.loadSize
+            )
             val items = response.documents.map {
                 val localDateTime = DateFormatter.convertToLocalDateTime(it.datetime)
+                if (storageList[it.thumbnailUrl] != null) {
+                    Log.d(DEBUG_DATA, "load: isExisted!! \n${it.thumbnailUrl}")
+                }
                 Item(
-                    id =0,
+                    id = ++index,
                     imgUrl = it.thumbnailUrl,
                     dateTime = localDateTime,
+                    isFavorite = storageList[it.thumbnailUrl] != null
                 )
             }
             val nextKey = if (response.meta.isEnd) null
@@ -34,7 +47,7 @@ class ImagePagingSource (
             }
             LoadResult.Page(
                 data = items,
-                prevKey = if (position == STARTING_PAGE_INDEX) null else position -1,
+                prevKey = if (position == STARTING_PAGE_INDEX) null else position - 1,
                 nextKey = nextKey
             )
         } catch (e: IOException) {

@@ -31,7 +31,7 @@ object SharedPrefsManager {
     }
 
     fun addItemInFavoriteList(item: Item) {
-        if (item.savedDateTime != null) favoriteList.put(item.imgUrl, item)
+        if (item.savedDateTime != null) favoriteList[item.imgUrl] = item
         //favoriteList.sortByDescending { it.savedDateTime }
         applyFavoriteListInPrefs()
     }
@@ -66,7 +66,7 @@ object SharedPrefsManager {
     }
 
     fun getFavoriteList(): LinkedHashMap<String, Item> {
-        Log.d(DEBUG_PREFS, "getFavoriteList: ${favoriteList.size}\n ${favoriteList.map { it.value.savedDateTime }}")
+        Log.d(DEBUG_PREFS, "getFavoriteList: ${favoriteList.size}\n ${favoriteList}")
         return favoriteList
     }
 

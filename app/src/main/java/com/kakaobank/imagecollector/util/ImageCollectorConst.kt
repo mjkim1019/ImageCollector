@@ -34,6 +34,7 @@ object ImageCollectorConst {
     const val DEBUG_DATE_FORMATTER = "DEBUG_DateFormatter"
     const val DEBUG_ITEM_VIEWHOLDER = "DEBUG_ItemViewHolder"
     const val DEBUG_PREFS = "DEBUG_Prefs"
+    const val DEBUG_DATA = "DEBUG_data"
 
     /**
      * ERROR TAG
