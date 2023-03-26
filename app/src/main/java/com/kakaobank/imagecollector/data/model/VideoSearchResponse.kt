@@ -3,7 +3,7 @@ package com.kakaobank.imagecollector.data.model
 import com.squareup.moshi.Json
 
 data class VideoSearchResponse(
-    val metaData: MetaData,
+    val meta: MetaData,
     val documents: MutableList<KakaoVideo>
 )
 

@@ -19,7 +19,7 @@ interface ApiService {
         @Query("query") query: String, // 검색 질의어
         @Query("sort") sort: String?, // accuracy OR recency, default=accuracy
         @Query("page") page: Int?, // 결과 페이지 번호, [1-15]
-        @Query("size") size: Int?, // 한 페이지에 보여질 문서 수, [1-30], default=15
+        @Query("size") size: Int? = 15, // 한 페이지에 보여질 문서 수, [1-30], default=15
     ): VideoSearchResponse
 
 }

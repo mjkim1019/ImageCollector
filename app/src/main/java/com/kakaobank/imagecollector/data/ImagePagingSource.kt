@@ -21,15 +21,15 @@ class ImagePagingSource(
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Item> {
         val position = params.key ?: STARTING_PAGE_INDEX
-        var index = 0;
+        var index = 0
         return try {
-            val response = apiService.searchImage(
+            val responseImage = apiService.searchImage(
                 query,
                 ImageCollectorConst.RECENCY,
                 position,
                 params.loadSize
             )
-            val items = response.documents.map {
+            val imageItems = responseImage.documents.map {
                 val localDateTime = DateFormatter.convertToLocalDateTime(it.datetime)
                 if (storageList[it.thumbnailUrl] != null) {
                     Log.d(DEBUG_DATA, "load: isExisted!! \n${it.thumbnailUrl}")
@@ -41,12 +41,32 @@ class ImagePagingSource(
                     isFavorite = storageList[it.thumbnailUrl] != null
                 )
             }
-            val nextKey = if (response.meta.isEnd) null
+
+            val responseVideo = apiService.searchVideo(
+                query,
+                ImageCollectorConst.RECENCY,
+                position,
+            )
+
+            val videoItems = responseVideo.documents.map {
+                val localDateTime = DateFormatter.convertToLocalDateTime(it.datetime)
+                if (storageList[it.thumbnail] != null) {
+                    Log.d(DEBUG_DATA, "load: isExisted!! \n${it.thumbnail}")
+                }
+                Item(
+                    id = ++index,
+                    imgUrl = it.thumbnail,
+                    dateTime = localDateTime,
+                    isFavorite = storageList[it.thumbnail] != null
+                )
+            }
+
+            val nextKey = if (responseImage.meta.isEnd && responseImage.meta.isEnd) null
             else {
                 position + (params.loadSize / NETWORK_PAGE_SIZE)
             }
             LoadResult.Page(
-                data = items,
+                data = imageItems + videoItems,
                 prevKey = if (position == STARTING_PAGE_INDEX) null else position - 1,
                 nextKey = nextKey
             )
