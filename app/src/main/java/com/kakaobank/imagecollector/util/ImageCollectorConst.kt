@@ -2,6 +2,11 @@ package com.kakaobank.imagecollector.util
 
 object ImageCollectorConst {
     /**
+     * SHARED PREFS MANAGER
+     */
+    const val PREFS_STORAGE = "favorite_storage"
+
+    /**
      * NETWORK
      */
     const val AUTH_HEADER_KEY = "Authorization"
