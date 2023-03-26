@@ -1,7 +1,7 @@
 package com.kakaobank.imagecollector.ui.viewmodels
 
 import com.kakaobank.imagecollector.base.BaseViewModel
-import com.kakaobank.imagecollector.models.Item
+import com.kakaobank.imagecollector.model.Item
 import com.kakaobank.imagecollector.util.SharedPrefsManager
 
 class StorageViewModel : BaseViewModel() {

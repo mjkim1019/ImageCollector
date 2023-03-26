@@ -6,7 +6,7 @@ import android.util.Log
 import com.google.gson.*
 import com.google.gson.reflect.TypeToken
 import com.kakaobank.imagecollector.BuildConfig
-import com.kakaobank.imagecollector.models.Item
+import com.kakaobank.imagecollector.model.Item
 import com.kakaobank.imagecollector.util.ImageCollectorConst.DEBUG_PREFS
 import com.kakaobank.imagecollector.util.ImageCollectorConst.ERROR_PREFS
 import com.kakaobank.imagecollector.util.ImageCollectorConst.PREFS_DEFAULT_RESULT

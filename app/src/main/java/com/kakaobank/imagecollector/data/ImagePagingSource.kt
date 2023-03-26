@@ -3,7 +3,7 @@ package com.kakaobank.imagecollector.data
 import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.kakaobank.imagecollector.models.Item
+import com.kakaobank.imagecollector.model.Item
 import com.kakaobank.imagecollector.util.DateFormatter
 import com.kakaobank.imagecollector.util.ImageCollectorConst
 import com.kakaobank.imagecollector.util.ImageCollectorConst.DEBUG_DATA

@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.kakaobank.imagecollector.databinding.ItemItemBinding
-import com.kakaobank.imagecollector.models.Item
+import com.kakaobank.imagecollector.model.Item
 
 class ItemListAdapter : RecyclerView.Adapter<ItemViewHolder>() {
     private var itemList: ArrayList<Item> = arrayListOf()
@@ -25,6 +25,6 @@ class ItemListAdapter : RecyclerView.Adapter<ItemViewHolder>() {
 
 
     fun submitList(list: List<Item>) {
-        itemList = list as ArrayList<Item>
+        if (list.isNotEmpty()) itemList = list as ArrayList<Item>
     }
 }

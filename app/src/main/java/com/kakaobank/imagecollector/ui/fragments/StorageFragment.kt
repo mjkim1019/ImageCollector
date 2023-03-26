@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.kakaobank.imagecollector.R
 import com.kakaobank.imagecollector.base.BaseFragment
 import com.kakaobank.imagecollector.databinding.FragmentStorageBinding
-import com.kakaobank.imagecollector.models.Item
+import com.kakaobank.imagecollector.model.Item
 import com.kakaobank.imagecollector.ui.adapters.ItemListAdapter
 import com.kakaobank.imagecollector.ui.model.EmptyState
 import com.kakaobank.imagecollector.ui.model.ScreenType

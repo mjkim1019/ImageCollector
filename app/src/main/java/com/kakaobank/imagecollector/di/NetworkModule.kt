@@ -2,7 +2,6 @@ package com.kakaobank.imagecollector.di
 
 import com.kakaobank.imagecollector.BuildConfig
 import com.kakaobank.imagecollector.data.ApiService
-import com.kakaobank.imagecollector.data.RemoteDataSourceImpl
 import com.kakaobank.imagecollector.util.ImageCollectorConst
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -86,9 +85,4 @@ class NetworkModule {
         return retrofit.create(ApiService::class.java)
     }
 
-    @Singleton
-    @Provides
-    fun provideRemoteDataSource(apiService: ApiService): RemoteDataSourceImpl {
-        return RemoteDataSourceImpl(apiService, Dispatchers.IO)
-    }
 }
