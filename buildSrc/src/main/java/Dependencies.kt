@@ -15,7 +15,7 @@ object Versions {
     const val OKHTTP = "4.10.0"
     const val MOSHI = "1.14.0"
 
-    // Other Librarys
+    // Other Libraries
     const val GLIDE = "4.15.0"
 
     // Hilt
