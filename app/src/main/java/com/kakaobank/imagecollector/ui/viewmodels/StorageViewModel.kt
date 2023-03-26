@@ -5,10 +5,11 @@ import com.kakaobank.imagecollector.models.Item
 import com.kakaobank.imagecollector.util.SharedPrefsManager
 
 class StorageViewModel : BaseViewModel() {
-    private var _favoriteList: MutableList<Item> = mutableListOf()
+    private var _favoriteList: List<Item> = listOf()
     val favoriteList get() = _favoriteList
 
     init {
-        _favoriteList = SharedPrefsManager.getFavoriteList()
+        val prefsFavoriteList = SharedPrefsManager.getFavoriteList()
+        _favoriteList = ArrayList(prefsFavoriteList.values).reversed()
     }
 }
